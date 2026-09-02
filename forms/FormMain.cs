@@ -22,7 +22,7 @@ namespace CrudApp.Forms
 
         private void InitializeComponent()
         {
-            this.Text = "Speed Cred - Clientes";
+            this.Text = "SiS Cred - Clientes";
             this.ClientSize = new System.Drawing.Size(1072, 600);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Icon = new Icon("app.ico");

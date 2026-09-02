@@ -37,7 +37,7 @@ namespace CrudApp.Forms
         {
             this.Icon = new Icon("app.ico");
             this.ClientSize = new Size(570, 730);
-            this.Text = "Speed Cred - Adicionar Cliente";
+            this.Text = "SiS Cred - Adicionar Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.AutoScaleMode = AutoScaleMode.Dpi;
             this.AutoScaleMode = AutoScaleMode.None;

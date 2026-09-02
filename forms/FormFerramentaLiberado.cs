@@ -31,7 +31,7 @@ namespace CrudApp.Forms
         {
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Icon = new Icon("app.ico");
-            Text = "Speed Cred - Calcular Valor Liberado";
+            Text = "SiS Cred - Calcular Valor Liberado";
             Width = 380;
             Height = 390;
             

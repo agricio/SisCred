@@ -37,7 +37,7 @@ namespace CrudApp.Forms
 
        private void InitializeComponent()
         {
-            this.Text = "Speed Cred - Historico do Cliente";
+            this.Text = "SiS Cred - Historico do Cliente";
             this.Icon = new Icon("app.ico");
             this.ClientSize = new Size(1300, 600);
             this.StartPosition = FormStartPosition.CenterScreen;

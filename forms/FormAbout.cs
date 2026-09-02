@@ -31,9 +31,11 @@ public class FormAbout : Form
 
     var img = new PictureBox
     {
-        Dock = DockStyle.Fill,
+        Width = 280,
+        Height = 210,
         SizeMode = PictureBoxSizeMode.Zoom,
         Image = Image.FromFile("assets/newlogo.png"),
+        Anchor = AnchorStyles.Top,
         Margin = new Padding(0, 0, 0, 8)
     };
 
@@ -54,17 +56,13 @@ public class FormAbout : Form
         AutoSize = true
     };
 
-    var linkSite = new LinkLabel { Text = "Site", Margin = new Padding(10, 5, 10, 5) };
-    linkSite.Click += (s, e) => Abrir("https://seusite.com");
-
-    var linkWhats = new LinkLabel { Text = "WhatsApp", Margin = new Padding(10, 5, 10, 5) };
-    linkWhats.Click += (s, e) => Abrir("https://wa.me/55999999999");
+    var linkSite = new LinkLabel { Text = "Portfólio", Margin = new Padding(10, 5, 10, 5) };
+    linkSite.Click += (s, e) => Abrir("https://porfolio-khaki.vercel.app/index_br.html");
 
     var linkGit = new LinkLabel { Text = "GitHub", Margin = new Padding(10, 5, 10, 5) };
-    linkGit.Click += (s, e) => Abrir("https://github.com/seuusuario");
+    linkGit.Click += (s, e) => Abrir("https://github.com/agricio");
 
     panelLinks.Controls.Add(linkSite);
-    panelLinks.Controls.Add(linkWhats);
     panelLinks.Controls.Add(linkGit);
 
     var btnFechar = new Button

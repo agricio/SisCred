@@ -48,7 +48,7 @@ namespace CrudApp.Forms
         private void InitializeComponent()
         {
             this.Icon = new Icon("app.ico");
-            Text = "Speed Cred - Editar Parcela";
+            Text = "SiS Cred - Editar Parcela";
             Width = 400;
             Height = 480;
             StartPosition = FormStartPosition.CenterParent;

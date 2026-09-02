@@ -88,11 +88,6 @@ C:\Users\User_mod\Desktop\projeto victor\CrudApp\obj\Debug\net8.0-windows\win-x6
 C:\Users\User_mod\Desktop\projeto victor\CrudApp\obj\Debug\net8.0-windows\win-x64\CrudApp.pdb
 C:\Users\User_mod\Desktop\projeto victor\CrudApp\obj\Debug\net8.0-windows\win-x64\CrudApp.genruntimeconfig.cache
 C:\Users\User_mod\Desktop\projeto victor\CrudApp\obj\Debug\net8.0-windows\win-x64\ref\CrudApp.dll
-C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.csproj.AssemblyReference.cache
-C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.AssemblyInfoInputs.cache
-C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.AssemblyInfo.cs
-C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.csproj.CoreCompileInputs.cache
 C:\Users\User_mod\Desktop\projeto victor\SisCred\bin\Debug\net8.0-windows\win-x64\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\User_mod\Desktop\projeto victor\SisCred\bin\Debug\net8.0-windows\win-x64\LatoFont\Lato-Black.ttf
 C:\Users\User_mod\Desktop\projeto victor\SisCred\bin\Debug\net8.0-windows\win-x64\LatoFont\Lato-BlackItalic.ttf
@@ -175,6 +170,12 @@ C:\Users\User_mod\Desktop\projeto victor\SisCred\bin\Debug\net8.0-windows\win-x6
 C:\Users\User_mod\Desktop\projeto victor\SisCred\bin\Debug\net8.0-windows\win-x64\sni.dll
 C:\Users\User_mod\Desktop\projeto victor\SisCred\bin\Debug\net8.0-windows\win-x64\e_sqlite3.dll
 C:\Users\User_mod\Desktop\projeto victor\SisCred\bin\Debug\net8.0-windows\win-x64\SQLite.Interop.dll
+C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.csproj.AssemblyReference.cache
+C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.AssemblyInfoInputs.cache
+C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.AssemblyInfo.cs
+C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.csproj.CoreCompileInputs.cache
+C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.sourcelink.json
 C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.csproj.Up2Date
 C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\CrudApp.dll
 C:\Users\User_mod\Desktop\projeto victor\SisCred\obj\Debug\net8.0-windows\win-x64\refint\CrudApp.dll

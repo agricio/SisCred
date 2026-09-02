@@ -14,7 +14,7 @@ public class FormSplash : Form
         var img = new PictureBox
         {
             Dock = DockStyle.Fill,
-            Image = Image.FromFile("assets/splash5.png"), // coloque o png na pasta do exe
+            Image = Image.FromFile("assets/splash.png"), // coloque o png na pasta do exe
             SizeMode = PictureBoxSizeMode.StretchImage
         };
 

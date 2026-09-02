@@ -42,7 +42,7 @@ namespace CrudApp.Forms
         private void InitializeComponent()
         {
             this.Icon = new Icon("app.ico");
-            this.Text = "Speed Cred - Simualdor de Contrato e Parcelas";
+            this.Text = "SiS Cred - Simualdor de Contrato e Parcelas";
             this.Width = 750;
             this.Height = 710;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -23,7 +23,7 @@ namespace CrudApp.Forms
             this.AutoScaleMode = AutoScaleMode.None;
             this.AutoSize = false;
 
-            Text = $"Speed Cred Sistema de Gerenciamento de Crédito - Dashboard - Usuario: {Session.CurrentUsername}";
+            Text = $"SiS Cred de Gerenciamento de Crédito - Dashboard - Usuario: {Session.CurrentUsername}";
             ClientSize = new Size(1000, 650);
             BackColor = Color.FromArgb(240, 242, 245);
 

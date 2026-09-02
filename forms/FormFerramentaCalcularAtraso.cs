@@ -32,7 +32,7 @@ public class FormFerramentaCalcularAtraso : Form
     {
         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         this.Icon = new Icon("app.ico");
-        Text = "SpeedCred - Cálculo de Parcela Atrasada";
+        Text = "SiS Cred - Cálculo de Parcela Atrasada";
         Width = 400;
         Height = 420;
         FormBorderStyle = FormBorderStyle.FixedDialog;

@@ -28,7 +28,7 @@ namespace CrudApp.Forms
         private void InitializeComponent()
         {
             this.Icon = new Icon("app.ico");
-            Text = "Speed Cred - Sincronização de Dados";
+            Text = "SiS Cred - Sincronização de Dados";
             Width = 600;
             Height = 420;
             StartPosition = FormStartPosition.CenterScreen;
