@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <SystemDrawingEnableWindowsCompatibility>true</SystemDrawingEnableWindowsCompatibility>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- AForge -->
+    <PackageReference Include="AForge" Version="2.2.5" />
+    <PackageReference Include="AForge.Video" Version="2.2.5" />
+    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.4.1" />
+    <PackageReference Include="EPPlus" Version="5.10.3" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.20" />
+    
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
+    
+    <!-- PDF -->
+    <PackageReference Include="PDFsharp-MigraDoc-GDI" Version="6.2.3" />
+    <PackageReference Include="QuestPDF" Version="2025.7.4" /> 
+    <!-- <PackageReference Include="PDFsharp" Version="6.2.4" /> -->
+    
+
+    <!-- Banco -->
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <!--  <PackageReference Include="Npgsql" Version="10.0.1" />  -->
+
+    <!-- Compatibilidade System.Drawing -->
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+
+    <!-- <None Include="Speed_cred.db">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None> -->
+
+    <!-- Ícone -->
+    <Content Include="app.ico" />
+    <EmbeddedResource Include="app.ico" />
+    <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
+    <!--<PackageReference Include="Xceed.Words.NET" Version="4.0.0" /> -->
+  </ItemGroup>
+
+</Project>
