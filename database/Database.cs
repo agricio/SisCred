@@ -7,7 +7,7 @@ namespace CrudApp.Database
 {
     public static class Database
     {
-        private const string DB_NAME = "Speed_cred.db";
+        private const string DB_NAME = "SiS_cred.db";
 
         public static string DbPath =>
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DB_NAME);
@@ -86,7 +86,7 @@ namespace CrudApp.Database
                 CREATE TABLE IF NOT EXISTS emprestimos (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     cliente_id INTEGER NOT NULL,
-                    contrato INTEGER,
+                    contrato TEXT,
                     liberado REAL,
                     agio REAL,
                     valor_contrato REAL,

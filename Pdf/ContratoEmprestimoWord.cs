@@ -56,7 +56,7 @@ namespace CrudApp.Word
 
             return new Dictionary<string, string>
             {
-                { "{{CONTRATO}}", _emprestimo.Contrato.ToString("D3") },
+                { "{{CONTRATO}}", _emprestimo.Contrato ?? "" },
                 { "{{NOME}}", _cliente.Nome ?? "" },
                 { "{{NACI}}", _cliente.Nacionalidade ?? "" },
                 { "{{PROFISSAO}}", _cliente.Ocupacao ?? "" },

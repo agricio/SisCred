@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using System.Globalization;
 using OfficeOpenXml;
 using CrudApp.Database;
 using CrudApp.Forms;
@@ -16,8 +17,15 @@ namespace CrudApp
             try
                 {
                     QuestPDF.Settings.License = LicenseType.Community;
+                    
                     // EPPlus (forma compatível)
                     ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                    
+                    // FORÇA CULTURA BRASILEIRA
+                    var cultura = new CultureInfo("pt-BR");
+
+                    CultureInfo.DefaultThreadCurrentCulture = cultura;
+                    CultureInfo.DefaultThreadCurrentUICulture = cultura;
                     
                     ApplicationConfiguration.Initialize();
                     Database.Database.Initialize();

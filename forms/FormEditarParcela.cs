@@ -272,10 +272,10 @@ namespace CrudApp.Forms
 
         private void BtnSalvar_Click(object? sender, EventArgs e)
         {
-            if (!double.TryParse(txtAmortizacao.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out var amort) ||
-                !double.TryParse(txtJuros.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out var juros) ||
-                !double.TryParse(txtValor.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out var valor) ||
-                !double.TryParse(txtSaldo.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out var saldo))
+            if (!double.TryParse(txtAmortizacao.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out var amort) ||
+                !double.TryParse(txtJuros.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out var juros) ||
+                !double.TryParse(txtValor.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out var valor) ||
+                !double.TryParse(txtSaldo.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out var saldo))
             {
                 MessageBox.Show("Valores numéricos inválidos.");
                 return;

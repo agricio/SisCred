@@ -58,7 +58,7 @@ namespace CrudApp.Pdf
                             .FitWidth();
 
                         col.Item().PaddingTop(10)
-                            .Background(Colors.Blue.Darken2)
+                            .Background(Colors.Green.Darken2)
                             .Padding(6)
                             .AlignCenter()
                             .Text("BOLETO DE COBRANÇA DE PARCELAS EM ATRASO")
@@ -230,8 +230,8 @@ namespace CrudApp.Pdf
                 {
                     row.RelativeItem().AlignLeft().Column(left =>
                     {
-                        left.Item().PaddingTop(10).Text("VICTOR HUGO DE OLIVEIRA E SILVA").FontSize(8);
-                        left.Item().Text("CPF: 055.537.694-00").FontSize(8);
+                        left.Item().PaddingTop(10).Text("SiS Cred Sistema Financeiro de Crédito").FontSize(8);
+                        left.Item().Text("CNPJ: 000.000.000-00").FontSize(8);
                         left.Item().Text("CREDOR").FontSize(8);
                     });
 

@@ -8,7 +8,6 @@ namespace CrudApp.Forms;
 public class FormFerramentaCalcularAtraso : Form
 {
     public double NovoValor { get; private set; }
-
     private TextBox txtValorPrestacao;
     private DateTimePicker dtVencimento;
     private DateTimePicker dtPagamento;
@@ -80,7 +79,7 @@ public class FormFerramentaCalcularAtraso : Form
 
         // Mora
         layout.Controls.Add(new Label { Text = "Juros de mora (% ao dia)", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft }, 0, 4);
-        txtMora = new TextBox { Dock = DockStyle.Fill, Text = "0.5" };
+        txtMora = new TextBox { Dock = DockStyle.Fill, Text = "0,5" };
         txtMora.TextChanged += (s, e) => Recalcular();
         layout.Controls.Add(txtMora, 1, 4);
 
@@ -93,6 +92,7 @@ public class FormFerramentaCalcularAtraso : Form
             BackColor = SystemColors.Window,
             Font = new Font("Segoe UI", 9F),
         };
+
         layout.SetColumnSpan(txtResultado, 2);
         layout.Controls.Add(txtResultado, 0, 6);
 
@@ -109,6 +109,7 @@ public class FormFerramentaCalcularAtraso : Form
             Left = 140, 
             Top = 4 
         };
+
         btnCancelar.Click += (s, e) =>
         {
             DialogResult = DialogResult.Cancel;

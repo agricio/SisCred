@@ -363,15 +363,41 @@ namespace CrudApp.Forms
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtContrato.Text, out var contrato) ||
-                !double.TryParse(txtLiberado.Text, out var liberado) ||
-                !double.TryParse(txtAgil.Text, out var agil) ||
-                !int.TryParse(cbParcelas.SelectedItem?.ToString(), out var parcelas) ||
-                !int.TryParse(cbCodigo.Text, out var codigo))
-            {
-                MessageBox.Show("Verifique os valores numéricos.");
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(txtContrato.Text) ||
+            !double.TryParse(txtLiberado.Text, out var liberado) ||
+            !double.TryParse(txtAgil.Text, out var agil) ||
+            !int.TryParse(cbParcelas.SelectedItem?.ToString(), out var parcelas) ||
+            !int.TryParse(cbCodigo.Text, out var codigo))
+        {
+            MessageBox.Show("Verifique os valores informados.");
+            return;
+        }
+
+        string contrato = txtContrato.Text.Trim();
+
+        bool contratoExiste = repo.GetByCliente(emprestimo.ClienteId)
+            .Any(e =>
+                e.Id != emprestimo.Id &&
+                string.Equals(
+                    e.Contrato?.Trim(),
+                    contrato,
+                    StringComparison.OrdinalIgnoreCase
+                )
+            );
+
+        if (contratoExiste)
+        {
+            MessageBox.Show(
+                "Já existe outro empréstimo com este número de contrato.",
+                "Contrato duplicado",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+
+            txtContrato.Focus();
+            txtContrato.SelectAll();
+            return;
+        }
 
             emprestimo.Contrato = contrato;
             emprestimo.Liberado = liberado;
@@ -383,22 +409,20 @@ namespace CrudApp.Forms
             emprestimo.Vencimento = GetDate(dtVencimento);
             emprestimo.Quitacao = GetDate(dtQuitacao);
 
-            emprestimo.Tipo = cbTipo.SelectedItem?.ToString() ?? "";
-            emprestimo.Situacao = cbSituacao.SelectedItem?.ToString() ?? "";
-            emprestimo.TipoQuitacao = cbTipoQuitacao.SelectedItem?.ToString() ?? "";
-
-            emprestimo.Parcelas = int.Parse(cbParcelas.SelectedItem.ToString());
-            emprestimo.Tipo = cbTipo.SelectedItem?.ToString() ?? "";
-
-            emprestimo.ValorContrato = double.Parse(txtValorContrato.Text);
-            //emprestimo.TotalJuros = double.Parse(txtTotalJuros.Text);
-            //emprestimo.TotalAmortizacao = double.Parse(txtTotalAmortizacao.Text);
+            emprestimo.Tipo = cbTipo.Text;
+            emprestimo.Situacao = cbSituacao.Text;
+            emprestimo.TipoQuitacao = cbTipoQuitacao.Text;
 
             RecalcularTotaisDoEmprestimo();
+
+            emprestimo.ValorContrato = double.Parse(txtValorContrato.Text);
+
             repo.Update(emprestimo);
 
+            
             MessageBox.Show("Empréstimo atualizado com sucesso!");
             DialogResult = DialogResult.OK;
+            var dashboard = Application.OpenForms.OfType<FormDashboard>().FirstOrDefault();dashboard?.RefreshSeguro();
         }
 
         // 🔧 Helpers

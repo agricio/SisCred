@@ -22,6 +22,7 @@ namespace CrudApp.Forms
         private readonly EmprestimoRepository repo = new EmprestimoRepository();
         private readonly ParcelaRepository parcelaRepo = new ParcelaRepository();
         private readonly ClienteRepository clienteRepo = new ClienteRepository();
+        private Panel panelConteudo;
         private Emprestimo emprestimo;
         private TextBox txtContrato;
         private TextBox txtLiberado;
@@ -59,13 +60,21 @@ namespace CrudApp.Forms
             this.Icon = new Icon("app.ico");
             Text = "Avaliar/Editar Contrato";
             Width = 650;
-            Height = 860;
+            Height = 750;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.AutoScaleMode = AutoScaleMode.Dpi;
+            //this.AutoScaleMode = AutoScaleMode.Dpi;
             this.AutoScaleMode = AutoScaleMode.None;
             this.AutoSize = false;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
+
+            panelConteudo = new Panel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true
+            };
+
+            this.Controls.Add(panelConteudo);
 
             int top = 40;
             int leftLabel = 20;
@@ -121,15 +130,29 @@ namespace CrudApp.Forms
 
             Label L(string t)
             {
-                var lbl = new Label { Text = t, Left = leftLabel, Top = top + 5, Width = 120 };
-                Controls.Add(lbl);
+                var lbl = new Label
+                {
+                    Text = t,
+                    Left = leftLabel,
+                    Top = top + 5,
+                    Width = 120
+                };
+
+                panelConteudo.Controls.Add(lbl);
                 return lbl;
             }
 
             TextBox T()
             {
-                var txt = new TextBox { Left = leftInput, Top = top, Width = 200 };
-                Controls.Add(txt);
+                var txt = new TextBox
+                {
+                    Left = leftInput,
+                    Top = top,
+                    Width = 200
+                };
+
+                panelConteudo.Controls.Add(txt);
+
                 top += 35;
                 return txt;
             }
@@ -144,7 +167,9 @@ namespace CrudApp.Forms
                     Format = DateTimePickerFormat.Short,
                     ShowCheckBox = true
                 };
-                Controls.Add(dt);
+
+                panelConteudo.Controls.Add(dt);
+
                 top += 35;
                 return dt;
             }
@@ -158,8 +183,11 @@ namespace CrudApp.Forms
                     Width = 200,
                     DropDownStyle = ComboBoxStyle.DropDownList
                 };
+
                 cb.Items.AddRange(items);
-                Controls.Add(cb);
+
+                panelConteudo.Controls.Add(cb);
+
                 top += 35;
                 return cb;
             }
@@ -183,7 +211,7 @@ namespace CrudApp.Forms
                 for (int i = 1; i <= 12; i++)
                     cbParcelas.Items.Add(i.ToString());
 
-                Controls.Add(cbParcelas);
+                panelConteudo.Controls.Add(cbParcelas);
                 top += 35;
 
             L("Código:"); cbCodigo = C(
@@ -234,7 +262,7 @@ namespace CrudApp.Forms
                     "Diario"
                 });
 
-                Controls.Add(cbTipo);
+                panelConteudo.Controls.Add(cbTipo);
                 top += 35;
 
 
@@ -253,7 +281,7 @@ namespace CrudApp.Forms
                 Top = top + 10,
                 Width = 200
             };
-            Controls.Add(lblParcelas);
+            panelConteudo.Controls.Add(lblParcelas);
 
             dgvParcelas = new DataGridView
             {
@@ -327,7 +355,7 @@ namespace CrudApp.Forms
             dgvParcelas.CellDoubleClick += DgvParcelas_CellDoubleClick;
             dgvParcelas.RowPrePaint += DgvParcelas_RowPrePaint;
 
-            Controls.Add(dgvParcelas);
+            panelConteudo.Controls.Add(dgvParcelas);
 
 
             // ---------- BOTÕES ----------
@@ -335,7 +363,7 @@ namespace CrudApp.Forms
             {
                 Text = "Salvar",
                 Left = 250,
-                Top = top + 240,
+                Top = top + 230,
                 Width = 120,
                 Height = 40
             };
@@ -345,14 +373,14 @@ namespace CrudApp.Forms
             {
                 Text = "Cancelar",
                 Left = 390,
-                Top = top + 240,
+                Top = top + 230,
                 Width = 120,
                 Height = 40
             };
             btnCancelar.Click += (s, e) => DialogResult = DialogResult.Cancel;
 
-            Controls.Add(btnSalvar);
-            Controls.Add(btnCancelar);
+            panelConteudo.Controls.Add(btnSalvar);
+            panelConteudo.Controls.Add(btnCancelar);
 
             btnCalcularLiberado = new Button
             {
@@ -364,19 +392,20 @@ namespace CrudApp.Forms
             };
 
             btnCalcularLiberado.Click += BtnCalcularLiberado_Click;
-            Controls.Add(btnCalcularLiberado);
+            panelConteudo.Controls.Add(btnCalcularLiberado);
 
              var btnCobranca = new Button
             {
                 Text = "Gerar Cobrança",
                 Left = 110,
-                Top = top + 240,
+                Top = top + 230,
                 Width = 120,
                 Height = 40
             };
 
             btnCobranca.Click += BtnGerarCobranca_Click;
-            Controls.Add(btnCobranca);
+            panelConteudo.Controls.Add(btnCobranca);
+            panelConteudo.AutoScrollMinSize = new Size(0, 830);
 
         }
 
@@ -404,15 +433,41 @@ namespace CrudApp.Forms
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtContrato.Text, out var contrato) ||
-                !double.TryParse(txtLiberado.Text, out var liberado) ||
-                !double.TryParse(txtAgil.Text, out var agil) ||
-                !int.TryParse(cbParcelas.SelectedItem?.ToString(), out var parcelas) ||
-                !int.TryParse(cbCodigo.Text, out var codigo))
-            {
-                MessageBox.Show("Verifique os valores numéricos.");
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(txtContrato.Text) ||
+            !double.TryParse(txtLiberado.Text, out var liberado) ||
+            !double.TryParse(txtAgil.Text, out var agil) ||
+            !int.TryParse(cbParcelas.SelectedItem?.ToString(), out var parcelas) ||
+            !int.TryParse(cbCodigo.Text, out var codigo))
+        {
+            MessageBox.Show("Verifique os valores informados.");
+            return;
+        }
+
+        string contrato = txtContrato.Text.Trim();
+
+        bool contratoExiste = repo.GetByCliente(emprestimo.ClienteId)
+            .Any(e =>
+                e.Id != emprestimo.Id &&
+                string.Equals(
+                    e.Contrato?.Trim(),
+                    contrato,
+                    StringComparison.OrdinalIgnoreCase
+                )
+            );
+
+        if (contratoExiste)
+        {
+            MessageBox.Show(
+                "Já existe outro empréstimo com este número de contrato.",
+                "Contrato duplicado",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+
+            txtContrato.Focus();
+            txtContrato.SelectAll();
+            return;
+        }
 
             emprestimo.Contrato = contrato;
             emprestimo.Liberado = liberado;
@@ -854,8 +909,6 @@ namespace CrudApp.Forms
                 return;
 
             double valorQuitacao = frm.ValorQuitacaoFinal;
-            MessageBox.Show($"Valor da quitação: {valorQuitacao:C}");
-            MessageBox.Show($"frm Valor: {frm.ValorQuitacaoFinal:C}");
 
             // 🔹 atualizar contrato
             emprestimo.Situacao = "Quitado";

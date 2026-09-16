@@ -54,7 +54,7 @@ namespace CrudApp.Pdf
                             .FitWidth();
 
                         col.Item().PaddingTop(10)
-                            .Background(Colors.Blue.Darken2)
+                            .Background(Colors.Green.Darken2)
                             .Padding(6)
                             .AlignCenter()
                             .Text($"RELATÓRIO - LIVRO CAIXA ({mesFormatado})")
@@ -228,7 +228,7 @@ namespace CrudApp.Pdf
 
                                     decimal saldo = totalRecebido + totalServicos - totalDespesas;
 
-                                    // 🔥 cor dinâmica
+                                    // cor dinâmica
                                     var corSaldo = saldo >= 0
                                         ? Colors.Green.Darken3
                                         : Colors.Red.Darken3;
@@ -244,7 +244,7 @@ namespace CrudApp.Pdf
 
                     // ================= FOOTER =================
                     page.Footer().AlignCenter()
-                        .Text($"Speed Cred - {DateTime.Now:dd/MM/yyyy}");
+                        .Text($"SiS Cred Sistema de Credito - {DateTime.Now:dd/MM/yyyy}");
                 });
             })
             .GeneratePdf(caminho);
@@ -277,11 +277,11 @@ namespace CrudApp.Pdf
             col.Item().Padding(10).Column(c =>
             {
                 c.Item()
-                    .Background(Colors.Blue.Lighten4)
+                    .Background(Colors.Green.Lighten4)
                     .Padding(6)
                     .Text(titulo)
                     .Bold()
-                    .FontColor(Colors.Blue.Darken2);
+                    .FontColor(Colors.Green.Darken2);
 
                 conteudo();
             });
@@ -292,7 +292,7 @@ namespace CrudApp.Pdf
             cell.Element(container =>
             {
                 container
-                    .Background(Colors.Blue.Darken2)
+                    .Background(Colors.Green.Darken2)
                     .Padding(5)
                     .AlignCenter()
                     .Text(texto)

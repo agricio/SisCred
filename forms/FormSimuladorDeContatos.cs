@@ -5,25 +5,22 @@ using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CrudApp.Repositories;
-using CrudApp.Shared;
 using CrudApp.Models;
 using System.Diagnostics;
 
-using CrudApp.Word;
 using CrudApp.Pdf;
+using CrudApp.Shared;
 using QuestPDF.Fluent;
-
-
 
 namespace CrudApp.Forms
 {
-    public class FormNovoEmprestimo : Form
+    public class FormCalcularParcelas : Form
     {
         private readonly EmprestimoRepository repo = new EmprestimoRepository();
         private readonly ClienteRepository crepo = new ClienteRepository();
 
-        private ComboBox cbCliente, cbTipo, cbParcelas, cbCodigo, cbTipoQuitacao, cbSituacao;        
-        private TextBox txtContrato, txtTaxa;
+        private ComboBox cbCliente, cbTipo, cbParcelas, cbCodigo;        
+        private TextBox txtTaxa;
         private TextBox txtLiberado;
         private TextBox txtAgio;
         private TextBox txtValorContrato;
@@ -31,26 +28,25 @@ namespace CrudApp.Forms
         private TextBox txtTotalAmortizacao;
         private DateTimePicker dtAverbacao;
         private DateTimePicker dtVencimento;
-        private DateTimePicker dtQuitacao;
         private Button btnSalvar;
         private Button btnCancelar;
+        private Button btnLimpar;
         private DataGridView gridParcelas;
-        private Panel panelConteudo;
         private List<Parcela> parcelasGeradas = new();
-        public FormNovoEmprestimo()
+        public FormCalcularParcelas()
         {
             InitializeComponent();
-            LoadClientes();
+            //LoadClientes();
         }
 
         private void InitializeComponent()
         {
             this.Icon = new Icon("app.ico");
-            this.Text = "SiS Cred - Novo Contrato";
-            this.Width = 720;
-            this.Height = 670;
+            this.Text = "SiS Cred - Simualdor de Contrato e Parcelas";
+            this.Width = 750;
+            this.Height = 710;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            //this.AutoScaleMode = AutoScaleMode.Dpi;
+            this.AutoScaleMode = AutoScaleMode.Dpi;
             this.AutoScaleMode = AutoScaleMode.None;
             this.AutoSize = false;
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -60,51 +56,30 @@ namespace CrudApp.Forms
             int leftLabel = 20;
             int leftInput = 150;
 
-            panelConteudo = new Panel
-            {
-                Dock = DockStyle.Fill,
-                AutoScroll = true
-            };
-
-            this.Controls.Add(panelConteudo);
-
             var btnGerarParcelas = new Button
             {
                 Text = "Gerar Parcelas",
                 Left = 420,
-                Top = top + 140,
+                Top = top + 110,
                 Width = 100,
                 Height = 26
             };
 
             btnGerarParcelas.Click += BtnGerarParcelas_Click;
-            panelConteudo.Controls.Add(btnGerarParcelas);
-
+            this.Controls.Add(btnGerarParcelas);
+            
 
             Button btnVP = new Button
             {
                 Text = "Calcular Liberado",
                 Left = 420,
-                Top = 93,
+                Top = 18,
                 Width = 120,
                 Height = 26
             };
 
             btnVP.Click += BtnVP_Click;
-            panelConteudo.Controls.Add(btnVP);
-
-           /* Button btnGerarContrato = new Button
-            {
-                Text = "Gerar Contrato (PDF)",
-                Left = 420,
-                Top = 130,
-                Width = 150,
-                Height = 30
-            };
-        
-            btnGerarContrato.Click += BtnGerarContrato_Click;
-            Controls.Add(btnGerarContrato);
-            */
+            Controls.Add(btnVP);
 
             Label L(string text)
             {
@@ -115,7 +90,7 @@ namespace CrudApp.Forms
                     Top = top + 5,
                     Width = 120
                 };
-                panelConteudo.Controls.Add(lbl);
+                this.Controls.Add(lbl);
                 return lbl;
             }
 
@@ -127,11 +102,12 @@ namespace CrudApp.Forms
                     Top = top,
                     Width = width
                 };
-                panelConteudo.Controls.Add(txt);
+                this.Controls.Add(txt);
                 top += 35;
                 return txt;
             }
 
+            
             TextBox T2(int width = 80)
             {
                 var txt = new TextBox
@@ -140,10 +116,11 @@ namespace CrudApp.Forms
                     Top = top,
                     Width = width
                 };
-                panelConteudo.Controls.Add(txt);
+                this.Controls.Add(txt);
                 top += 35;
                 return txt;
             }
+
 
             DateTimePicker D()
             {
@@ -154,7 +131,7 @@ namespace CrudApp.Forms
                     Width = 120,
                     Format = DateTimePickerFormat.Short
                 };
-                panelConteudo.Controls.Add(dt);
+                this.Controls.Add(dt);
                 top += 35;
                 return dt;
             }
@@ -168,11 +145,10 @@ namespace CrudApp.Forms
                     Width = 250,
                     DropDownStyle = ComboBoxStyle.DropDownList
                 };
-                panelConteudo.Controls.Add(cb);
+                this.Controls.Add(cb);
                 top += 35;
                 return cb;
             }
-
 
             ComboBox C2()
             {
@@ -191,7 +167,7 @@ namespace CrudApp.Forms
                     "Diario"
                 });
 
-                panelConteudo.Controls.Add(cb);
+                this.Controls.Add(cb);
                 top += 35;
                 return cb;
             }
@@ -209,7 +185,7 @@ namespace CrudApp.Forms
                 for (int i = 1; i <= 31; i++)
                     cb.Items.Add(i.ToString());
 
-                panelConteudo.Controls.Add(cb);
+                this.Controls.Add(cb);
                 top += 35;
                 return cb;
             }
@@ -243,7 +219,7 @@ namespace CrudApp.Forms
                     "015"
                 });
 
-                panelConteudo.Controls.Add(cb);
+                this.Controls.Add(cb);
                 top += 35;
                 return cb;
             }
@@ -264,7 +240,7 @@ namespace CrudApp.Forms
                     "Vencido",
                 });
 
-                panelConteudo.Controls.Add(cb);
+                this.Controls.Add(cb);
                 top += 35;
                 return cb;
             }
@@ -287,18 +263,19 @@ namespace CrudApp.Forms
                     "Refinanciada"
                 });
 
-                panelConteudo.Controls.Add(cb);
+                this.Controls.Add(cb);
                 top += 35;
                 return cb;
             }
 
 
             // ---------- CAMPOS ----------
-            L("Cliente:");
-            cbCliente = C();
 
-            L("Contrato:");
-            txtContrato = T();
+            //L("Cliente:");
+            //cbCliente = C();
+
+           // L("Contrato:");
+           // txtContrato = T();
 
             L("Valor Liberado:");
             txtLiberado = T();
@@ -321,9 +298,6 @@ namespace CrudApp.Forms
             L("Vencimento:");
             dtVencimento = D();
 
-            //L("Situação:");
-            //cbSituacao = C5();
-
             L("Agio:");
             txtAgio = T();
 
@@ -336,41 +310,56 @@ namespace CrudApp.Forms
             L("Total Amortização:");
             txtTotalAmortizacao = T();
 
-            L("Quitação:");
-            dtQuitacao = D();
-            dtQuitacao.Enabled = false;
-
-            //L("Tipo Quitação:");
-            //cbTipoQuitacao = C6();
-
             // ---------- BOTÕES ----------
             btnSalvar = new Button
             {
-                Text = "Salvar Celebrar",
+                Text = "Salvar",
                 Left = 150,
-                Top = top + 230,
+                Top = top + 240,
                 Width = 100,
                 Height = 35
             };
             btnSalvar.Click += BtnSalvar_Click;
-            //btnSalvar.Click += BtnGerarContrato_Click;
-            panelConteudo.Controls.Add(btnSalvar);
+            //this.Controls.Add(btnSalvar);
 
             btnCancelar = new Button
             {
                 Text = "Cancelar",
                 Left = 280,
-                Top = top + 230,
+                Top = top + 240,
                 Width = 100,
                 Height = 35
             };
             btnCancelar.Click += (s, e) => this.DialogResult = DialogResult.Cancel;
-            panelConteudo.Controls.Add(btnCancelar);
+           // this.Controls.Add(btnCancelar);
+
+           btnLimpar = new Button
+            {
+                Text = "Limpar",
+                Left = 580,
+                Top = 360,
+                Width = 100,
+                Height = 35
+            };
+            btnLimpar.Click += BtnLimpar_Click;
+            Controls.Add(btnLimpar);
+
+            Button btnPdf = new Button
+            {
+                Text = "Gerar Proposta PDF",
+                Left = 420,
+                Top = 360,
+                Width = 140,
+                Height = 35
+            };
+
+            btnPdf.Click += BtnGerarPdf_Click;
+            Controls.Add(btnPdf);
 
             gridParcelas = new DataGridView
             {
                 Left = 20,
-                Top = 510,
+                Top = 430,
                 Width = 660,
                 Height = 220,
                 ReadOnly = true,
@@ -422,24 +411,10 @@ namespace CrudApp.Forms
                 Width = 120
             });
 
-            gridParcelas.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Situacao",
-                DataPropertyName = "Situacao",
-                Width = 120
-            });
-
-            panelConteudo.Controls.Add(gridParcelas);
-            panelConteudo.AutoScrollMinSize = new Size(0, 790);
+            this.Controls.Add(gridParcelas);
 
         }
 
-        private void LoadClientes()
-        {
-            cbCliente.DataSource = crepo.GetAll();
-            cbCliente.DisplayMember = "Nome";
-            cbCliente.ValueMember = "Id";
-        }
 
         private void BtnSalvar_Click(object? sender, EventArgs e)
         {
@@ -452,7 +427,6 @@ namespace CrudApp.Forms
             var emp = new Emprestimo
             {
                 ClienteId = (int)cbCliente.SelectedValue,
-                Contrato = txtContrato.Text.Trim(),
                 Liberado = double.Parse(txtLiberado.Text),
                 Agio = double.Parse(txtAgio.Text),
                 ValorContrato = double.Parse(txtValorContrato.Text),
@@ -462,20 +436,17 @@ namespace CrudApp.Forms
                 Codigo = int.TryParse(cbCodigo.SelectedItem?.ToString(), out var cod) ? cod : 0,
                 Averbacao = dtAverbacao.Value,
                 Vencimento = dtVencimento.Value,
-                Quitacao = dtQuitacao.Value,
+                //Quitacao = dtQuitacao.Value,
                 Tipo = cbTipo.SelectedItem?.ToString() ?? "",
-                Situacao = "A Vencer",
-                TipoQuitacao = ""
+                //Situacao = cbSituacao.SelectedItem?.ToString() ?? "",
+                //TipoQuitacao = cbTipoQuitacao.SelectedItem?.ToString() ?? ""
             };
 
             //  salva empréstimo UMA VEZ
             int emprestimoId = repo.AddAndReturnId(emp);
 
-            //  BUSCA O OBJETO REAL DO BANCO
-            var emprestimoSalvo = repo.GetById(emprestimoId);
-
-            // agora sim, parcelas
             var parcelaRepo = new ParcelaRepository();
+
             foreach (var p in parcelasGeradas)
             {
                 p.EmprestimosId = emprestimoId;
@@ -485,32 +456,6 @@ namespace CrudApp.Forms
             MessageBox.Show("Empréstimo e parcelas salvos com sucesso!");
             DialogResult = DialogResult.OK;
             Close();
-            var cliente = (Cliente)cbCliente.SelectedItem;
-
-            // WORD
-            // =====================
-            string nomeBase = $"Contrato_{emprestimoSalvo.Contrato}_{cliente.Nome}_{emprestimoSalvo.Averbacao:dd-MM-yyyy}";
-                nomeBase = string.Concat(nomeBase.Split(Path.GetInvalidFileNameChars()));
-
-            string pasta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"Contratos");
-
-            Directory.CreateDirectory(pasta);
-
-            string caminhoWord = Path.Combine(pasta, nomeBase + ".docx");
-
-            var documentoWord = new ContratoEmprestimoWord(
-                    cliente,
-                    emprestimoSalvo,
-                    parcelasGeradas
-                );
-
-                documentoWord.Gerar(caminhoWord); 
-
-            //new FormPdfViewer(caminhoPdf).ShowDialog();
-            Process.Start(new ProcessStartInfo { FileName = caminhoWord, UseShellExecute = true});
-            //var dash = Application.OpenForms.OfType<FormDashboard>().FirstOrDefault(); dash?.RecarregarDashboard();
-            var dashboard = Application.OpenForms.OfType<FormDashboard>().FirstOrDefault();dashboard?.RefreshSeguro();
-
         }
 
         private List<Parcela> GerarParcelasPrice(
@@ -586,13 +531,6 @@ namespace CrudApp.Forms
                 cbTipo.SelectedItem?.ToString() ?? "Mensal"
             );
 
-            // ✅ Quitação final automático
-            dtQuitacao.Value = CalcularVencimento(
-                dtAverbacao.Value,
-                qtd,
-                cbTipo.SelectedItem?.ToString() ?? "Mensal"
-            );
-
             gridParcelas.DataSource = null;
             gridParcelas.DataSource = parcelasGeradas;
 
@@ -601,6 +539,7 @@ namespace CrudApp.Forms
             CalcularJurosContrato();
             CalcularAmortizacaoContrato();
         }
+
         private DateTime CalcularVencimento(
             DateTime dataAverbacao,
             int qtdParcelas,
@@ -616,6 +555,7 @@ namespace CrudApp.Forms
         _ => dataAverbacao
             };
         }
+
         private void BtnVP_Click(object? sender, EventArgs e)
         {
             using var frm = new FormCalcularLiberado();
@@ -666,48 +606,25 @@ namespace CrudApp.Forms
         }
 
         private void CalcularAgio()
-        {
-            if (!double.TryParse(txtValorContrato.Text, out var valorContrato))
-                return;
-
-            if (!double.TryParse(txtLiberado.Text, out var valorLiberado))
-                return;
-
-            if (!int.TryParse(cbParcelas.SelectedItem?.ToString(), out var qtdParcelas))
-                return;
-
-            if (qtdParcelas <= 0)
-                return;
-
-            double agio = (valorContrato - valorLiberado) / qtdParcelas;
-
-            if (agio < 0)
-                agio = 0;
-
-            txtAgio.Text = agio.ToString("F2");
-        }
-
-        private Emprestimo ObterEmprestimoDaTela()
-        {
-            if (parcelasGeradas.Count == 0)
-                throw new InvalidOperationException("Gere as parcelas antes de gerar o contrato.");
-
-            return new Emprestimo
             {
-                Contrato = txtContrato.Text.Trim(),
-                Liberado = double.TryParse(txtLiberado.Text, out var l) ? l : 0,
-                Agio = double.TryParse(txtAgio.Text, out var a) ? a : 0,
-                ValorContrato = double.TryParse(txtValorContrato.Text, out var vc) ? vc : 0,
-                TotalJuros = double.TryParse(txtTotalJuros.Text, out var tj) ? tj : 0,
-                TotalAmortizacao = double.TryParse(txtTotalAmortizacao.Text, out var ta) ? ta : 0,
-                Parcelas = parcelasGeradas.Count,
-                Averbacao = dtAverbacao.Value,
-                Vencimento = dtVencimento.Value,
-                Quitacao = dtQuitacao.Value,
-                Tipo = cbTipo.SelectedItem?.ToString() ?? "",
-                Situacao = cbSituacao.SelectedItem?.ToString() ?? "",
-                TipoQuitacao = cbTipoQuitacao.SelectedItem?.ToString() ?? ""
-            };
+                if (!double.TryParse(txtValorContrato.Text, out var valorContrato))
+                     return;
+
+                if (!double.TryParse(txtLiberado.Text, out var valorLiberado))
+                        return;
+
+                if (!int.TryParse(cbParcelas.SelectedItem?.ToString(), out var qtdParcelas))
+                        return;
+
+                if (qtdParcelas <= 0)
+                        return;
+
+                double agio = (valorContrato - valorLiberado) / qtdParcelas;
+
+                if (agio < 0)
+                        agio = 0;
+
+                    txtAgio.Text = agio.ToString("F2");
         }
 
         private DateTime CalcularDiaUtil(DateTime dataInicial, int diasUteis)
@@ -729,6 +646,81 @@ namespace CrudApp.Forms
             }
 
             return data;
+        }
+
+        private void BtnLimpar_Click(object? sender, EventArgs e)
+        {
+            // TextBox
+            txtLiberado.Clear();
+            txtTaxa.Clear();
+            txtAgio.Clear();
+            txtValorContrato.Clear();
+            txtTotalJuros.Clear();
+            txtTotalAmortizacao.Clear();
+
+            // ComboBox
+            cbParcelas.SelectedIndex = -1;
+            cbCodigo.SelectedIndex = -1;
+            cbTipo.SelectedIndex = -1;
+
+            // Datas
+            dtAverbacao.Value = DateTime.Today;
+            dtVencimento.Value = DateTime.Today;
+
+            // Grid
+            parcelasGeradas.Clear();
+
+            gridParcelas.DataSource = null;
+            gridParcelas.Rows.Clear();
+
+            // Foco inicial
+            txtLiberado.Focus();
+        }
+
+       private void BtnGerarPdf_Click(object sender, EventArgs e)
+        {
+            if (parcelasGeradas == null || parcelasGeradas.Count == 0)
+            {
+                MessageBox.Show("Gere as parcelas antes de gerar o PDF.");
+                return;
+            }
+
+            var emp = new Emprestimo
+            {
+                Liberado = double.Parse(txtLiberado.Text),
+                Parcelas = int.Parse(cbParcelas.SelectedItem.ToString()),
+                TotalJuros = double.Parse(txtTotalJuros.Text),
+                TotalAmortizacao = double.Parse(txtTotalAmortizacao.Text),
+                ValorContrato = double.Parse(txtValorContrato.Text),
+                Codigo = int.Parse(cbCodigo.SelectedItem.ToString()),
+                Vencimento = dtVencimento.Value,
+                Tipo = cbTipo.SelectedItem?.ToString() ?? ""
+            };
+
+           // string caminho = Path.Combine(
+            //    Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+             //   $"Proposta_Emprestimo_{DateTime.Now:yyyyMMddHHmmss}.pdf"
+           // );
+
+            string pasta = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "Propostas");
+
+            Directory.CreateDirectory(pasta);
+
+            string caminho = Path.Combine(
+                pasta,
+                $"Proposta_Emprestimo_{DateTime.Now:dd-MM-yyyy_HH-mm}.pdf"
+                .Replace(" ", "_"));
+
+            var pdf = new PdfPropostaEmprestimo();
+            pdf.GeneratePdf(emp, parcelasGeradas, caminho);
+
+            //MessageBox.Show("📄 Proposta gerada com sucesso!");
+
+            // ✅ ABRIR NO SEU FORM DE VISUALIZAÇÃO
+            var viewer = new FormPdfViewer(caminho);
+            viewer.ShowDialog(); // ou Show()
         }
 
     }

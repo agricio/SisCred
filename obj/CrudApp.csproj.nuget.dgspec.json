@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\CrudApp.csproj",
-        "projectName": "CrudApp",
+        "projectName": "SiS Cred",
         "projectPath": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\CrudApp.csproj",
         "packagesPath": "C:\\Users\\User_mod\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\obj\\",
@@ -114,6 +114,10 @@
               "version": "[8.0.22, 8.0.22]"
             },
             {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[8.0.22, 8.0.22]"
             },
@@ -122,7 +126,15 @@
               "version": "[8.0.22, 8.0.22]"
             },
             {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
               "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
               "version": "[8.0.22, 8.0.22]"
             }
           ],

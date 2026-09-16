@@ -3502,7 +3502,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\CrudApp.csproj",
-      "projectName": "CrudApp",
+      "projectName": "SiS Cred",
       "projectPath": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\CrudApp.csproj",
       "packagesPath": "C:\\Users\\User_mod\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\obj\\",
@@ -3608,6 +3608,10 @@
             "version": "[8.0.22, 8.0.22]"
           },
           {
+            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+            "version": "[8.0.22, 8.0.22]"
+          },
+          {
             "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[8.0.22, 8.0.22]"
           },
@@ -3616,7 +3620,15 @@
             "version": "[8.0.22, 8.0.22]"
           },
           {
+            "name": "Microsoft.NETCore.App.Runtime.win-x64",
+            "version": "[8.0.22, 8.0.22]"
+          },
+          {
             "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.22, 8.0.22]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
             "version": "[8.0.22, 8.0.22]"
           }
         ],
@@ -3642,7 +3654,7 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "CrudApp depends on EPPlus (>= 5.10.3) but EPPlus 5.10.3 was not found. EPPlus 6.0.3 was resolved instead.",
+      "message": "SiS Cred depends on EPPlus (>= 5.10.3) but EPPlus 5.10.3 was not found. EPPlus 6.0.3 was resolved instead.",
       "libraryId": "EPPlus",
       "targetGraphs": [
         "net8.0-windows7.0",

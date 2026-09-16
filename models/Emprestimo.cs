@@ -7,7 +7,7 @@ namespace CrudApp.Models
         public int Id { get; set; }
         public int ClienteId { get; set; }
 
-        public int Contrato { get; set; }
+        public string Contrato { get; set; }
         public double Liberado { get; set; }
         public double ValorContrato { get; set; }
         public double TotalJuros { get; set; }

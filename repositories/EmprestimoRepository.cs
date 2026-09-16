@@ -238,9 +238,7 @@ namespace CrudApp.Repositories
 
                 ClienteId = Convert.ToInt32(rd["cliente_id"]),
 
-                Contrato = rd.IsDBNull(idContrato)
-                    ? 0
-                    : Convert.ToInt32(rd["contrato"]),
+                Contrato = rd.IsDBNull(idContrato) ? "" : rd["contrato"].ToString(),
 
                 Liberado = rd.IsDBNull(idLiberado)
                     ? 0

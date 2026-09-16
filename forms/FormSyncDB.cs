@@ -17,7 +17,7 @@ namespace CrudApp.Forms
         private Button btnImportar;
         private Button btnExcluir;
 
-        private readonly string pastaSync = @"C:\Speed_Cred_Backup\Sync";
+        private readonly string pastaSync = @"C:\SiS_Cred_Backup\Sync";
 
         public FormSyncDB()
         {

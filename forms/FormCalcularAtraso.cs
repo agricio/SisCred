@@ -81,7 +81,7 @@ public class FormCalculoAtraso : Form
         txtMora = new TextBox
         {
             Dock = DockStyle.Fill,
-            Text = "0.5"
+            Text = "0,5"
         };
         txtMora.TextChanged += (s, e) => Recalcular();
 
@@ -162,36 +162,65 @@ public class FormCalculoAtraso : Form
             return;
         }
 
+        // Data atual
         DateTime dataPagamento = DateTime.Today;
+
+        // Calcula os dias de atraso
         int dias = (dataPagamento - vencimento).Days;
 
-        double taxaDecimal = taxa / 100.0;
-        double jurosDeMora = mora / 100.0;
+        // Se ainda não venceu, considera 0 dias de atraso
+        if (dias < 0)
+            dias = 0;
 
-        double multa = valorPrestacao * taxaDecimal;
-        double totalJuros = valorPrestacao * jurosDeMora * dias;
+        // Converte as porcentagens para decimal
+        double taxaMulta = taxa / 100.0;
+        double taxaMora = mora / 100.0;
 
+        // MULTA
+    
+        double multa = valorPrestacao * taxaMulta;
+
+        // JUROS DE MORA
+        
+        double totalJuros = valorPrestacao * taxaMora * dias;
+
+        // ACRÉSCIMO TOTAL
+    
         Acrescimo = multa + totalJuros;
+
+        // NOVO VALOR
+
         NovoValor = valorPrestacao + Acrescimo;
+
+        // EXIBIÇÃO
 
         txtResultado.Clear();
 
         txtResultado.SelectionColor = Color.DarkRed;
-        txtResultado.SelectionFont = new Font(txtResultado.Font, FontStyle.Bold);
-        txtResultado.AppendText($"Dias em atraso: {dias}\n\n");
+        txtResultado.SelectionFont =
+            new Font(txtResultado.Font, FontStyle.Bold);
+
+        txtResultado.AppendText(
+            $"Dias em atraso: {dias}\n\n");
 
         txtResultado.SelectionColor = Color.DimGray;
-        txtResultado.AppendText($"Valor original: {valorPrestacao:F2}\n");
+        txtResultado.AppendText(
+            $"Valor original: {valorPrestacao:F2}\n");
 
         txtResultado.SelectionColor = Color.DarkOrange;
-        txtResultado.AppendText($"Multa: {multa:F2}\n");
+        txtResultado.AppendText(
+            $"Multa: {multa:F2}\n");
 
         txtResultado.SelectionColor = Color.Firebrick;
-        txtResultado.AppendText($"Total de juros: {totalJuros:F2}\n\n");
+        txtResultado.AppendText(
+            $"Total de juros: {totalJuros:F2}\n\n");
 
         txtResultado.SelectionColor = Color.DarkGreen;
-        txtResultado.SelectionFont = new Font(txtResultado.Font, FontStyle.Bold);
-        txtResultado.AppendText($"Total hoje: {NovoValor:F2}");
+        txtResultado.SelectionFont =
+            new Font(txtResultado.Font, FontStyle.Bold);
+
+        txtResultado.AppendText(
+            $"Total hoje: {NovoValor:F2}");
     }
 
 }

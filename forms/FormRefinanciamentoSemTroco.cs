@@ -387,9 +387,12 @@ namespace CrudApp.Forms
                 return;
             }
 
-            if (!int.TryParse(txtContratoNovo.Text, out int contratoNovo))
+            string contratoNovo = txtContratoNovo.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(contratoNovo))
             {
-                MessageBox.Show("Contrato inválido.");
+                MessageBox.Show("Informe o número do contrato.");
+                txtContratoNovo.Focus();
                 return;
             }
 
@@ -547,10 +550,12 @@ namespace CrudApp.Forms
 
         private Emprestimo ObterEmprestimoDaTela()
         {
+            string contrato = txtContratoNovo.Text.Trim();
+
             if (parcelasGeradas == null || parcelasGeradas.Count == 0)
                 throw new InvalidOperationException("Gere as parcelas antes de gerar o contrato.");
 
-            if (!int.TryParse(txtContratoNovo.Text, out var contrato))
+            if (string.IsNullOrWhiteSpace(contrato))
                 throw new InvalidOperationException("Contrato inválido.");
 
             if (!double.TryParse(txtSaldoRefinanciado.Text, out var liberado))

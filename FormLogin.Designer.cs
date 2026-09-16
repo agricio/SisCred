@@ -83,7 +83,7 @@ namespace CrudApp
             this.MinimizeBox = false;
             this.ControlBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Speed Cred - Login";
+            this.Text = "SiS Cred - Login";
             this.ResumeLayout(false);
             this.PerformLayout();
             

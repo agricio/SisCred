@@ -39,7 +39,7 @@ namespace CrudApp.Pdf
                             .FitWidth();
 
                         col.Item().PaddingTop(10)
-                            .Background(Colors.Blue.Darken2)
+                            .Background(Colors.Green.Darken2)
                             .Padding(6)
                             .AlignCenter()
                             .Text("SIMULAÇÃO DE PROPOSTA DE EMPRÉSTIMO")
@@ -124,7 +124,7 @@ namespace CrudApp.Pdf
 
                     // ================= FOOTER =================
                     page.Footer().AlignCenter()
-                        .Text($"Speed Cred - {DateTime.Now:dd/MM/yyyy}");
+                        .Text($"SiS Cred Sistema Financeiro - {DateTime.Now:dd/MM/yyyy}");
                 });
             })
             .GeneratePdf(caminho);
@@ -154,11 +154,11 @@ namespace CrudApp.Pdf
                 .Column(c =>
                 {
                     c.Item()
-                        .Background(Colors.Blue.Lighten4)
+                        .Background(Colors.Green.Lighten4)
                         .Padding(6)
                         .Text(titulo)
                         .Bold()
-                        .FontColor(Colors.Blue.Darken2);
+                        .FontColor(Colors.Green.Darken2);
 
                     conteudo();
                 });
@@ -169,7 +169,7 @@ namespace CrudApp.Pdf
             cell.Element(container =>
             {
                 container
-                    .Background(Colors.Blue.Darken2)
+                    .Background(Colors.Green.Darken2)
                     .PaddingVertical(6)
                     .PaddingHorizontal(4)
                     .AlignCenter()

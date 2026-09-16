@@ -19,6 +19,7 @@ namespace CrudApp.Forms
         private Button btnTirarFoto, btnSalvar, btnCancelar, btnAbrirCamera, btnGerarPdf;
         private NumericUpDown numQtdContratos;
         private byte[]? fotoBytes;
+        private Panel panelConteudo;
 
         private MaskedTextBox txtRg, txtCpf, txtTelefone , txtAgencia, txtConta, txtCep;
 
@@ -36,7 +37,7 @@ namespace CrudApp.Forms
         private void InitializeComponent()
         {
             this.Icon = new Icon("app.ico");
-            this.ClientSize = new Size(570, 730);
+            this.ClientSize = new Size(570, 670);
             this.Text = "SiS Cred - Adicionar Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.AutoScaleMode = AutoScaleMode.Dpi;
@@ -44,6 +45,16 @@ namespace CrudApp.Forms
             this.AutoSize = false;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
+
+            //rolagem vertical do form
+
+            panelConteudo = new Panel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true
+            };
+
+            this.Controls.Add(panelConteudo);
             
             // Labels + inputs (arranjo simples)
             int leftLabel = 20;
@@ -57,40 +68,48 @@ namespace CrudApp.Forms
 
             Label L(string text, int t)
             {
-                var lbl = new Label { Text = text, Left = leftLabel, Top = t + 3, Width = labelW };
-                this.Controls.Add(lbl);
+                var lbl = new Label
+                {
+                    Text = text,
+                    Left = leftLabel,
+                    Top = t + 3,
+                    Width = labelW
+                };
+
+                panelConteudo.Controls.Add(lbl);
+
                 return lbl;
             }
 
             // NOME
             txtNome = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Nome:", top);
-            this.Controls.Add(txtNome);
+            panelConteudo.Controls.Add(txtNome);
             top += vGap;
 
             // RG
             txtRg = new MaskedTextBox
             { Left = leftInput, Top = top, Width = 90, Mask = "00.000.000-0" };
-            this.Controls.Add(txtRg);
+            panelConteudo.Controls.Add(txtRg);
             L("RG:", top);
             top += vGap;
 
             // CPF
             txtCpf = new MaskedTextBox { Left = leftInput, Top = top, Width = 90, Mask = "000.000.000-00" };
-            this.Controls.Add(txtCpf);
+            panelConteudo.Controls.Add(txtCpf);
             L("CPF:", top);
             top += vGap;
 
             // Ocupação
             txtOcupacao = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Ocupação:", top);
-            Controls.Add(txtOcupacao);
+            panelConteudo.Controls.Add(txtOcupacao);
             top += vGap;
 
             // Nacionalidade
             txtNacionalidade = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Nacionalidade:", top);
-            Controls.Add(txtNacionalidade);
+            panelConteudo.Controls.Add(txtNacionalidade);
             top += vGap;
 
             // Estado_civil
@@ -112,43 +131,43 @@ namespace CrudApp.Forms
             cbEstado_civil.SelectedIndex = 0;
 
             L("Estado CIvil:", top);
-            Controls.Add(cbEstado_civil);
+            panelConteudo.Controls.Add(cbEstado_civil);
             top += vGap;
 
             // Estado
             txtEstado = new TextBox { Left = leftInput, Top = top, Width = 90 };
             L("Estado:", top);
-            Controls.Add(txtEstado);
+            panelConteudo.Controls.Add(txtEstado);
             top += vGap;
 
             // Cidade
             txtCidade = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Cidade:", top);
-            Controls.Add(txtCidade);
+            panelConteudo.Controls.Add(txtCidade);
             top += vGap;
 
             // Bairro
             txtBairro = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Bairro:", top);
-            Controls.Add(txtBairro);
+            panelConteudo.Controls.Add(txtBairro);
             top += vGap;
 
             // Rua
             txtRua = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Rua:", top);
-            Controls.Add(txtRua);
+            panelConteudo.Controls.Add(txtRua);
             top += vGap;
 
             // Número
             txtNumero = new TextBox { Left = leftInput, Top = top, Width = 60 };
             L("Número:", top);
-            Controls.Add(txtNumero);
+            panelConteudo.Controls.Add(txtNumero);
             top += vGap;
 
             // Complemento
             txtComplemento = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Compl.:", top);
-            Controls.Add(txtComplemento);
+            panelConteudo.Controls.Add(txtComplemento);
             top += vGap;
 
             // CEP
@@ -160,25 +179,22 @@ namespace CrudApp.Forms
                 Mask = "00000-000"
             };
             L("CEP:", top);
-            Controls.Add(txtCep);
+            panelConteudo.Controls.Add(txtCep);
             top += vGap;
 
             // Email
             txtEmail = new TextBox { Left = leftInput, Top = top, Width = inputW };
             L("Email:", top);
-            this.Controls.Add(txtEmail);
+            panelConteudo.Controls.Add(txtEmail);
             top += vGap;
 
             // Telefone
             txtTelefone = new MaskedTextBox { Left = leftInput, Top = top, Width = 100, Mask = "(00) 00000-0000" };
-            this.Controls.Add(txtTelefone);
+            panelConteudo.Controls.Add(txtTelefone);
             L("Telefone:", top);
             top += vGap;
 
-            // Qtd Contratos
-
-
-            // Score
+                        // Score
             cbScore = new ComboBox
             {
                 Left = leftInput,
@@ -203,30 +219,28 @@ namespace CrudApp.Forms
             // Banco
             txtBanco = new TextBox { Left = leftInput, Top = top, Width = 120 };
             L("Banco:", top);
-            this.Controls.Add(txtBanco);
+            panelConteudo.Controls.Add(txtBanco);
             top += vGap;
 
             // Agencia
             txtAgencia = new MaskedTextBox { Left = leftInput, Top = top, Width = 60, Mask = "0000-0" };
             L("Agencia:", top);
-            this.Controls.Add(txtAgencia);
+            panelConteudo.Controls.Add(txtAgencia);
             top += vGap;
 
             // Conta
             txtConta = new MaskedTextBox { Left = leftInput, Top = top, Width = 90, Mask = "00000000-0" };
             L("Conta:", top);
-            this.Controls.Add(txtConta);
+            panelConteudo.Controls.Add(txtConta);
             top += vGap;
 
             // Pix Telefone
 
             txtCel_pix = new TextBox { Left = leftInput, Top = top, Width = 140, };
-            this.Controls.Add(txtCel_pix);
+            panelConteudo.Controls.Add(txtCel_pix);
             L("Chave PIX:", top);
             top += vGap;
-
-
-                   
+  
             picFoto = new PictureBox
             {
                 Left = 390,
@@ -240,8 +254,23 @@ namespace CrudApp.Forms
             btnTirarFoto = new Button { Left = 400, Top = 230, Width = 120, Text = "Carregar Foto" };
             btnAbrirCamera = new Button { Left = 400, Top = 260, Width = 120, Text = "Abrir Câmera" };
             
-            btnSalvar = new Button { Left = 20, Top = 670, Width = 120, Text = "Salvar" };
-            btnCancelar = new Button { Left = 160, Top = 670, Width = 120, Text = "Cancelar" };
+            btnSalvar = new Button
+            {
+                Left = 20,
+                Top = top + 20,
+                Width = 120,
+                Height = 32,
+                Text = "Salvar"
+            };
+
+            btnCancelar = new Button
+            {
+                Left = 160,
+                Top = top + 20,
+                Width = 120,
+                Height = 32,
+                Text = "Cancelar"
+            };
 
             // EVENTOS
             btnTirarFoto.Click += BtnTirarFoto_Click;
@@ -251,14 +280,17 @@ namespace CrudApp.Forms
             btnAbrirCamera.Click += BtnAbrirCamera_Click;
 
             // ADD CONTROLS
-            this.Controls.Add(txtNome);
-            this.Controls.Add(txtEmail);
-            this.Controls.Add(txtTelefone);
-            this.Controls.Add(picFoto);
-            this.Controls.Add(btnTirarFoto);
-            this.Controls.Add(btnSalvar);
-            this.Controls.Add(btnCancelar);
-            this.Controls.Add(btnAbrirCamera);
+            panelConteudo.Controls.Add(txtNome);
+            panelConteudo.Controls.Add(txtEmail);
+            panelConteudo.Controls.Add(txtTelefone);
+            panelConteudo.Controls.Add(picFoto);
+            panelConteudo.Controls.Add(btnTirarFoto);
+            panelConteudo.Controls.Add(btnSalvar);
+            panelConteudo.Controls.Add(btnCancelar);
+            panelConteudo.Controls.Add(btnAbrirCamera);
+
+            // espaço vertical para a rolagem
+            panelConteudo.AutoScrollMinSize = new Size(0, top + 80);
 
         }
 

@@ -8,11 +8,11 @@ using CrudApp.Services;
 
 namespace CrudApp.Forms
 {
-    public class FormDashboard : Form
+    public class FormDashboardUser : Form
     {
         private readonly ParcelaRepository parcelaRepo = new ParcelaRepository();
 
-        public FormDashboard()
+        public FormDashboardUser()
         {
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace CrudApp.Forms
             this.AutoSize = false;
 
             this.Text =
-                $"SiS Cred Sistema de Gerenciamento de Crédito - Dashboard - Administrador: {Session.CurrentUsername}";
+                $"SiS Cred de Gerenciamento de Crédito - Dashboard - Usuario: {Session.CurrentUsername}";
 
             this.ClientSize = new Size(1000, 650);
             this.BackColor = Color.FromArgb(240, 242, 245);
@@ -84,10 +84,10 @@ namespace CrudApp.Forms
             Panel pAtraso = CriarBlocoVencimentos();
             Panel pVencer = CriarBlocoCaixa();
 
-            grid.Controls.Add(pMes, 0, 0);
+            grid.Controls.Add(pMes, 0, 1);
             grid.Controls.Add(pAmortJuros, 1, 0);
 
-            grid.Controls.Add(pAtraso, 0, 1);
+            grid.Controls.Add(pAtraso, 0, 0);
             grid.Controls.Add(pVencer, 1, 1);
 
             // ========================================================
@@ -155,71 +155,11 @@ namespace CrudApp.Forms
             );
 
             // ========================================================
-            // CONTRATOS
-            // ========================================================
-
-            ToolStripMenuItem menuContratos =
-                new ToolStripMenuItem("Contratos");
-
-            menuContratos.DropDownItems.Add(
-                "Novo Contrato",
-                null,
-                (s, e) => new FormNovoEmprestimo().Show()
-            );
-
-            menuContratos.DropDownItems.Add(
-                "Contratos deste ano Corrente",
-                null,
-                (s, e) => new FormEmprestimosAnoAtual().Show()
-            );
-
-            menuContratos.DropDownItems.Add(
-                "Contratos Gerais",
-                null,
-                (s, e) => new FormEmprestimos().Show()
-            );
-
-            // ========================================================
-            // CAIXA
-            // ========================================================
-
-            ToolStripMenuItem menuCaixa =
-                new ToolStripMenuItem("Caixa");
-
-            menuCaixa.DropDownItems.Add(
-                "Adicionar Despesa",
-                null,
-                (s, e) => new FormCadastroDespesa().Show()
-            );
-
-            menuCaixa.DropDownItems.Add(
-                "Despesas Mensais",
-                null,
-                (s, e) => new FormListaDespesas().Show()
-            );
-
-            menuCaixa.DropDownItems.Add(
-                new ToolStripSeparator()
-            );
-
-            menuCaixa.DropDownItems.Add(
-                "Livro Caixa",
-                null,
-                (s, e) => new FormLivroCaixa().Show()
-            );
-
-            // ========================================================
             // FERRAMENTAS
             // ========================================================
 
             ToolStripMenuItem menuFerramentas =
                 new ToolStripMenuItem("Ferramentas");
-
-            menuFerramentas.DropDownItems.Add(
-                "Gerenciamento de Usuários",
-                null,
-                (s, e) => new FormUsers().Show()
-            );
 
             menuFerramentas.DropDownItems.Add(
                 new ToolStripSeparator()
@@ -277,8 +217,6 @@ namespace CrudApp.Forms
 
             menu.Items.Add(menuClientes);
             menu.Items.Add(menuServicos);
-            menu.Items.Add(menuContratos);
-            menu.Items.Add(menuCaixa);
             menu.Items.Add(menuFerramentas);
 
             return menu;
@@ -352,7 +290,7 @@ namespace CrudApp.Forms
             Panel conteudo;
 
             basePanel = CriarBase(
-                "Entradas por Mês",
+                "",
                 out conteudo
             );
 
@@ -385,327 +323,7 @@ namespace CrudApp.Forms
                 )
             );
 
-            // --------------------------------------------------------
-            // GRÁFICO
-            // --------------------------------------------------------
-
-            Chart chart = new Chart
-            {
-                Dock = DockStyle.Fill,
-                BackColor = Color.White
-            };
-
-            ChartArea area = new ChartArea();
-
-            area.BackColor = Color.White;
-
-            area.AxisX.MajorGrid.Enabled = false;
-            area.AxisX.LineColor = Color.LightGray;
-            area.AxisX.LabelStyle.Font =
-                new Font("Segoe UI", 8F, FontStyle.Bold);
-
-            area.AxisY.MajorGrid.LineColor =
-                Color.Gainsboro;
-
-            area.AxisY.LineColor =
-                Color.LightGray;
-
-            area.AxisY.LabelStyle.Font =
-                new Font("Segoe UI", 8F);
-
-            area.AxisY.LabelStyle.Format =
-                "N0";
-
-            chart.ChartAreas.Add(area);
-
-            Legend legend = new Legend
-            {
-                Docking = Docking.Bottom,
-                Alignment = StringAlignment.Center,
-                Font = new Font("Segoe UI", 8F)
-            };
-
-            chart.Legends.Add(legend);
-
-            Series sValor = new Series("Parcelas")
-            {
-                ChartType = SeriesChartType.Column,
-                LegendText = "Parcelas"
-            };
-
-            Series sJuros = new Series("Juros")
-            {
-                ChartType = SeriesChartType.Column,
-                LegendText = "Juros"
-            };
-
-            Series sAmort = new Series("Amortização")
-            {
-                ChartType = SeriesChartType.Column,
-                LegendText = "Amortização"
-            };
-
-            sValor["PointWidth"] = "0.65";
-            sJuros["PointWidth"] = "0.65";
-            sAmort["PointWidth"] = "0.65";
-
-            sValor.Color =
-                Color.FromArgb(52, 152, 219);
-
-            sJuros.Color =
-                Color.FromArgb(231, 76, 60);
-
-            sAmort.Color =
-                Color.FromArgb(46, 204, 113);
-
-            chart.Series.Add(sValor);
-            chart.Series.Add(sJuros);
-            chart.Series.Add(sAmort);
-
-            // --------------------------------------------------------
-            // PAINEL LATERAL
-            // --------------------------------------------------------
-
-            Panel lateral = new Panel
-            {
-                Dock = DockStyle.Fill,
-                Padding = new Padding(8, 5, 5, 5),
-                BackColor = Color.White
-            };
-
-            Label lblAno = new Label
-            {
-                Text = "Ano:",
-                Location = new Point(5, 5),
-                AutoSize = true,
-                Font = new Font("Segoe UI", 8F),
-                ForeColor = Color.FromArgb(40, 40, 40)
-            };
-
-            NumericUpDown numAno = new NumericUpDown
-            {
-                Minimum = 2000,
-                Maximum = 2100,
-                Value = DateTime.Now.Year,
-                Location = new Point(5, 28),
-                Width = 75,
-                Height = 23,
-                Font = new Font("Segoe UI", 8F)
-            };
-
-            Label lblTotalParcelas = new Label
-            {
-                AutoSize = true,
-                Location = new Point(5, 75),
-                Font = new Font(
-                    "Segoe UI",
-                    8F,
-                    FontStyle.Bold
-                ),
-                ForeColor = Color.Gray
-            };
-
-            Label lblTotalJuros = new Label
-            {
-                AutoSize = true,
-                Location = new Point(5, 94),
-                Font = new Font(
-                    "Segoe UI",
-                    8F,
-                    FontStyle.Bold
-                ),
-                ForeColor = Color.Gray
-            };
-
-            Label lblTotalAmort = new Label
-            {
-                AutoSize = true,
-                Location = new Point(5, 113),
-                Font = new Font(
-                    "Segoe UI",
-                    8F,
-                    FontStyle.Bold
-                ),
-                ForeColor = Color.Gray
-            };
-
-            lateral.Controls.Add(lblAno);
-            lateral.Controls.Add(numAno);
-            lateral.Controls.Add(lblTotalParcelas);
-            lateral.Controls.Add(lblTotalJuros);
-            lateral.Controls.Add(lblTotalAmort);
-
-            layout.Controls.Add(chart, 0, 0);
-            layout.Controls.Add(lateral, 1, 0);
-
-            conteudo.Controls.Add(layout);
-
-            // --------------------------------------------------------
-            // RECALCULAR
-            // --------------------------------------------------------
-
-            void Recalcular(int ano)
-            {
-                sValor.Points.Clear();
-                sJuros.Points.Clear();
-                sAmort.Points.Clear();
-
-                var parcelas = parcelaRepo
-                    .GetAll()
-                    .Where(p =>
-                        p.Pagamento.HasValue &&
-                        p.Pagamento.Value.Year == ano &&
-                        (
-                            p.Situacao.Equals(
-                                "Paga",
-                                StringComparison.OrdinalIgnoreCase
-                            )
-                            ||
-                            p.Situacao.Equals(
-                                "Paga em Atraso",
-                                StringComparison.OrdinalIgnoreCase
-                            )
-                            ||
-                            p.Situacao.Equals(
-                                "Paga Antecipado",
-                                StringComparison.OrdinalIgnoreCase
-                            )
-                        )
-                    )
-                    .ToList();
-
-                var porMes = parcelas
-                    .GroupBy(p => p.Pagamento!.Value.Month)
-                    .Select(g => new
-                    {
-                        Mes = g.Key,
-
-                        Total = g.Sum(
-                            x => x.ValorPrestacao ?? 0
-                        ),
-
-                        Juros = g.Sum(
-                            x => x.Juros ?? 0
-                        ),
-
-                        Amort = g.Sum(
-                            x => x.Amortizacao ?? 0
-                        )
-                    })
-                    .ToDictionary(x => x.Mes);
-
-                string[] meses =
-                {
-                    "Jan",
-                    "Fev",
-                    "Mar",
-                    "Abr",
-                    "Mai",
-                    "Jun",
-                    "Jul",
-                    "Ago",
-                    "Set",
-                    "Out",
-                    "Nov",
-                    "Dez"
-                };
-
-                double totalParcelas = 0;
-                double totalJuros = 0;
-                double totalAmort = 0;
-
-                for (int mes = 1; mes <= 12; mes++)
-                {
-                    double total = 0;
-                    double juros = 0;
-                    double amort = 0;
-
-                    if (porMes.TryGetValue(mes, out var d))
-                    {
-                        total = d.Total;
-                        juros = d.Juros;
-                        amort = d.Amort;
-
-                        totalParcelas += total;
-                        totalJuros += juros;
-                        totalAmort += amort;
-                    }
-
-                        sValor.Points.AddXY(
-                            meses[mes - 1],
-                            total
-                        );
-
-                        sJuros.Points.AddXY(
-                            meses[mes - 1],
-                            juros
-                        );
-
-                        sAmort.Points.AddXY(
-                            meses[mes - 1],
-                            amort
-                        );
-
-                        if (total > 0)
-                        {
-                            sValor.Points[mes - 1].Label =
-                                total.ToString("C2");
-                        }
-
-                        if (juros > 0)
-                        {
-                            sJuros.Points[mes - 1].Label =
-                                juros.ToString("C2");
-                        }
-
-                        if (amort > 0)
-                        {
-                        sAmort.Points[mes - 1].Label =
-                            amort.ToString("C2");
-                    }
-                }
-
-                double maxValor = new[]
-                {
-                    sValor.Points
-                        .Select(p => p.YValues[0])
-                        .DefaultIfEmpty(0)
-                        .Max(),
-
-                    sJuros.Points
-                        .Select(p => p.YValues[0])
-                        .DefaultIfEmpty(0)
-                        .Max(),
-
-                    sAmort.Points
-                        .Select(p => p.YValues[0])
-                        .DefaultIfEmpty(0)
-                        .Max()
-                }.Max();
-
-                area.AxisY.Minimum = 0;
-
-                if (maxValor <= 0)
-                    area.AxisY.Maximum = 10;
-                else
-                    area.AxisY.Maximum = maxValor * 1.25;
-
-                lblTotalParcelas.Text =
-                    $"Total Parcelas: {totalParcelas:C2}";
-
-                lblTotalJuros.Text =
-                    $"Total Juros: {totalJuros:C2}";
-
-                lblTotalAmort.Text =
-                    $"Total Amortização: {totalAmort:C2}";
-            }
-
-            numAno.ValueChanged += (s, e) =>
-            {
-                Recalcular((int)numAno.Value);
-            };
-
-            Recalcular(DateTime.Now.Year);
+            
 
             return basePanel;
         }
@@ -720,188 +338,8 @@ namespace CrudApp.Forms
             Panel conteudo;
 
             basePanel = CriarBase(
-                "Amortização x Juros",
+                "",
                 out conteudo
-            );
-
-            // --------------------------------------------------------
-            // TOPO
-            // --------------------------------------------------------
-
-            Panel topo = new Panel
-            {
-                Dock = DockStyle.Top,
-                Height = 34,
-                BackColor = Color.White
-            };
-
-            Label lblAno = new Label
-            {
-                Text = "Ano:",
-                Location = new Point(5, 8),
-                AutoSize = true,
-                Font = new Font("Segoe UI", 8F)
-            };
-
-            NumericUpDown numAno = new NumericUpDown
-            {
-                Minimum = 2000,
-                Maximum = 2100,
-                Value = DateTime.Now.Year,
-                Location = new Point(45, 5),
-                Width = 75,
-                Height = 23,
-                Font = new Font("Segoe UI", 8F)
-            };
-
-            topo.Controls.Add(lblAno);
-            topo.Controls.Add(numAno);
-
-            // --------------------------------------------------------
-            // GRÁFICO
-            // --------------------------------------------------------
-
-            var chart = new Chart
-                {
-                    Location = new Point(7, 60),
-                    Anchor = AnchorStyles.Top |
-                            AnchorStyles.Left |
-                            AnchorStyles.Right |
-                            AnchorStyles.Bottom,
-                    MinimumSize = new Size(1, 1)
-                };
-
-            conteudo.Controls.Add(chart);
-
-            conteudo.Resize += (s, e) =>
-                {
-                    int largura = Math.Max(1, conteudo.ClientSize.Width - 14);
-                    int altura = Math.Max(1, conteudo.ClientSize.Height - 110);
-
-                    chart.SetBounds(
-                        7,
-                        60,
-                        largura,
-                        altura
-                    );
-                };
-
-            ChartArea area = new ChartArea();
-
-            area.BackColor = Color.White;
-
-            area.AxisX.MajorGrid.Enabled = false;
-            area.AxisX.LineColor = Color.LightGray;
-            area.AxisX.LabelStyle.Font =
-                new Font("Segoe UI", 8F);
-
-            area.AxisY.MajorGrid.LineColor =
-                Color.Gainsboro;
-
-            area.AxisY.LineColor =
-                Color.LightGray;
-
-            area.AxisY.LabelStyle.Font =
-                new Font("Segoe UI", 8F);
-
-            chart.ChartAreas.Add(area);
-
-            Series serieAmort =
-                new Series("Amortização")
-                {
-                    ChartType =
-                        SeriesChartType.Spline,
-
-                    BorderWidth = 3,
-
-                    XValueType =
-                        ChartValueType.String,
-
-                    YValueType =
-                        ChartValueType.Double,
-
-                    IsValueShownAsLabel = false
-                };
-
-            Series serieJuros =
-                new Series("Juros")
-                {
-                    ChartType =
-                        SeriesChartType.Spline,
-
-                    BorderWidth = 3,
-
-                    XValueType =
-                        ChartValueType.String,
-
-                    YValueType =
-                        ChartValueType.Double,
-
-                    IsValueShownAsLabel = false
-                };
-
-            serieAmort.Color =
-                Color.FromArgb(52, 152, 219);
-
-            serieJuros.Color =
-                Color.FromArgb(243, 156, 18);
-
-            Legend legend = new Legend
-            {
-                Docking = Docking.Bottom,
-                Alignment = StringAlignment.Center,
-                Font = new Font("Segoe UI", 8F)
-            };
-
-            chart.Legends.Add(legend);
-
-            chart.Series.Add(serieAmort);
-            chart.Series.Add(serieJuros);
-
-            // --------------------------------------------------------
-            // TOTAL
-            // --------------------------------------------------------
-
-            Label lblTotais = new Label
-            {
-                Dock = DockStyle.Bottom,
-                Height = 25,
-                Font = new Font(
-                    "Segoe UI",
-                    8F,
-                    FontStyle.Bold
-                ),
-                ForeColor = Color.Gray,
-                TextAlign = ContentAlignment.MiddleLeft
-            };
-
-            // --------------------------------------------------------
-            // CONTEÚDO
-            // --------------------------------------------------------
-
-            conteudo.Padding = new Padding(8);
-
-            conteudo.Controls.Add(chart);
-            conteudo.Controls.Add(lblTotais);
-            conteudo.Controls.Add(topo);
-
-            // --------------------------------------------------------
-            // CARREGAR
-            // --------------------------------------------------------
-
-            numAno.ValueChanged += (s, e) =>
-            {
-                CarregarGraficoAmortizacaoJuros(
-                    chart,
-                    lblTotais,
-                    (int)numAno.Value
-                );
-            };
-
-            CarregarGraficoAmortizacaoJuros(
-                chart,
-                lblTotais,
-                (int)numAno.Value
             );
 
             return basePanel;

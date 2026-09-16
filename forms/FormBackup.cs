@@ -24,8 +24,8 @@ namespace CrudApp.Forms
         private Panel panelGrid;
         private ProgressBar progressBar;
 
-        private readonly string pastaBackups = @"C:\Speed_Cred_Backup";
-        private readonly string pastaSupport = @"C:\Speed_Cred_Backup\Support";
+        private readonly string pastaBackups = @"C:\SiS_Cred_Backup";
+        private readonly string pastaSupport = @"C:\SiS_Cred\Support";
 
         public FormBackup()
         {
@@ -37,7 +37,7 @@ namespace CrudApp.Forms
         {
             this.Icon = new Icon("app.ico");
 
-            Text = "Speed Cred - Backup Restauração do Sistema";
+            Text = "SiS Cred - Backup Restauração do Sistema";
             Width = 650;
             Height = 500;
             StartPosition = FormStartPosition.CenterScreen;

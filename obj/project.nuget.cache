@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "o3WeGYBKu9o=",
+  "dgSpecHash": "WyqXC3GaO/0=",
   "success": true,
   "projectFilePath": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\CrudApp.csproj",
   "expectedPackageFiles": [
@@ -54,16 +54,19 @@
     "C:\\Users\\User_mod\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\User_mod\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512",
     "C:\\Users\\User_mod\\.nuget\\packages\\system.windows.forms.datavisualization\\1.0.0-prerelease.20110.1\\system.windows.forms.datavisualization.1.0.0-prerelease.20110.1.nupkg.sha512",
-    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.22\\microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512",
-    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.22\\microsoft.netcore.app.host.win-x64.8.0.22.nupkg.sha512",
     "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.22\\microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
-    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.22\\microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512"
+    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.22\\microsoft.netcore.app.runtime.win-x64.8.0.22.nupkg.sha512",
+    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.22\\microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.22\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.22.nupkg.sha512",
+    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.22\\microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.22\\microsoft.aspnetcore.app.runtime.win-x64.8.0.22.nupkg.sha512",
+    "C:\\Users\\User_mod\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.22\\microsoft.netcore.app.host.win-x64.8.0.22.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1603",
       "level": "Warning",
-      "message": "CrudApp depends on EPPlus (>= 5.10.3) but EPPlus 5.10.3 was not found. EPPlus 6.0.3 was resolved instead.",
+      "message": "SiS Cred depends on EPPlus (>= 5.10.3) but EPPlus 5.10.3 was not found. EPPlus 6.0.3 was resolved instead.",
       "projectPath": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\CrudApp.csproj",
       "warningLevel": 1,
       "filePath": "C:\\Users\\User_mod\\Desktop\\projeto victor\\SisCred\\CrudApp.csproj",

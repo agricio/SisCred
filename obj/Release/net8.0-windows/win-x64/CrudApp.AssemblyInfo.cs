@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("CrudApp")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("SiS Cred")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("CrudApp")]
-[assembly: System.Reflection.AssemblyTitleAttribute("CrudApp")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abc882bfa740a0d738f67dec5ccc498a41a3f172")]
+[assembly: System.Reflection.AssemblyProductAttribute("SiS Cred")]
+[assembly: System.Reflection.AssemblyTitleAttribute("SiS Cred")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
