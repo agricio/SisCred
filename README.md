@@ -385,9 +385,5 @@ O executavel está na área de realese aqui do github, junto com seed de backup 
 ---
 
 <p align="center">
-  Desenvolvido com ❤️ utilizando C#, .NET 8 e SQLite.
-</p>
-
-<p align="center">
   <strong>Speed Cred</strong> — Gestão de crédito de forma simples e organizada.
 </p>
