@@ -2,12 +2,6 @@
   <img src="assets/newlogo.png" alt="Speed Cred" width="250">
 </p>
 
-<h1 align="center">Speed Cred</h1>
-
-<p align="center">
-  Sistema de gerenciamento de crédito, empréstimos e controle financeiro
-</p>
-
 <p align="center">
   <strong>Sistema de gerenciamento de crédito, empréstimos e controle financeiro</strong>
 </p>
@@ -17,8 +11,6 @@
 </p>
 
 <p align="center">
-
-
 
 ![C#](https://img.shields.io/badge/C%23-.NET%208-512BD4?style=for-the-badge&logo=csharp&logoColor=white)
 
@@ -103,7 +95,7 @@ Principais recursos:
 
 ---
 
-## 📅 Gerenciamento de parcelas
+## Gerenciamento de parcelas
 
 Cada contrato possui suas respectivas parcelas, permitindo acompanhar individualmente cada operação.
 
@@ -198,7 +190,7 @@ A geração de documentos utiliza bibliotecas específicas para criação e mani
 
 # Backup
 
-O sistema possui recursos para realização de backup do banco de dados e de simcronisação de dados para atualização de dois bancos sem perca de dados.
+O sistema possui recursos para realização de backup do banco de dados e de simcronisação de dados.
 
 A funcionalidade tem como objetivo facilitar a preservação das informações e permitir a recuperação dos dados em caso de problemas no computador ou no armazenamento.
 
@@ -256,33 +248,30 @@ O SQLite é utilizado localmente pela aplicação.
 ## 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/Speed-Cred.git
+git clone 
 ```
 
-## 2. Entrar no diretório
-
-```bash
-cd SiS-Cred
-```
-
-## 3. Restaurar os pacotes
+## 2. Restaurar os pacotes
 
 ```bash
 dotnet restore
 ```
 
-## 4. Compilar
+## 3. Compilar
 
 ```bash
 dotnet build
 ```
 
-## 5. Executar
+## 4. Executar
 
 ```bash
 dotnet run
 ```
 
+## 5. Logar
+
+O sistema assim assim que criar o DB ele cria um administrador (login: admin, password: 123)
 ---
 
 # Publicação
@@ -313,24 +302,39 @@ A estrutura permite:
 - Controle de acesso ao sistema.
 
 ---
-
-Depois, inclua no README:
-
-### Login
-
-![Tela de Login](screenshots/login.png)
+# ScreenShots
 
 ### Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/dashborad.png)
 
 ### Clientes
 
-![Clientes](screenshots/clientes.png)
+![Clientes](screenshots/clientes_lista.png)
 
-### Empréstimos
+### Editar Cliente
 
-![Empréstimos](screenshots/emprestimos.png)
+![Editar Cliente](screenshots/editar_cliente.png)
+
+### Contratos
+
+![Contratos](screenshots/contratos_gerais.png)
+
+### Editar Contrato
+
+![Editar Contrato](screenshots/etidar_contrato.png)
+
+### Simulador de Contrato
+
+![Simulador de Contrato](screenshots/simulador_de_contrato.png)
+
+### Outros Simuladores
+
+![Outros Simuladores](screenshots/outros_simuladores.png)
+
+### Gerenciador de Usuarios
+
+![Gerenciador de Usuarios](screenshots/gerenciandor_usuarios.png)
 
 ### Livro Caixa
 
@@ -366,9 +370,7 @@ O projeto continua em desenvolvimento.
 - [ ] Melhorias no sistema de sincronização
 - [ ] Novos relatórios financeiros
 - [ ] Melhorias na gestão de permissões
-- [ ] Mais opções de exportação
 - [ ] Melhorias na interface
-- [ ] Novos indicadores financeiros
 
 ---
 
@@ -378,21 +380,7 @@ O SiS Cred é uma aplicação desktop e atualmente utiliza **SQLite**, sendo ind
 
 Para cenários com múltiplos computadores acessando simultaneamente o mesmo banco de dados, recomenda-se avaliar uma arquitetura com banco de dados servidor, como PostgreSQL ou SQL Server.
 
----
-
-# Autor
-
-**Agricio Neto**
-
-Desenvolvimento e manutenção do projeto **SiS Cred**.
-
----
-
-# Licença
-
-Este projeto possui licença definida pelo autor.
-
-Consulte o arquivo `LICENSE` para obter informações sobre utilização, distribuição e modificação do software.
+O executavel está na área de realese aqui do github, junto com seed de backup caso queiram estar as funções sem adicionar clientes.
 
 ---
 
