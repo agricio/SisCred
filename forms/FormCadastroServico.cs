@@ -104,6 +104,7 @@ namespace CrudApp.Forms
                 Text = "Salvar",
                 Left = 150,
                 Top = 260,
+                Height = 35,
                 Width = 120
             };
             btnSalvar.Click += BtnSalvar_Click;

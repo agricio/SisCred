@@ -73,8 +73,8 @@ namespace CrudApp.Forms
                 Text = "Gerar Parcelas",
                 Left = 420,
                 Top = top + 140,
-                Width = 100,
-                Height = 26
+                Width = 140,
+                Height = 36
             };
 
             btnGerarParcelas.Click += BtnGerarParcelas_Click;
@@ -86,8 +86,8 @@ namespace CrudApp.Forms
                 Text = "Calcular Liberado",
                 Left = 420,
                 Top = 93,
-                Width = 120,
-                Height = 26
+                Width = 140,
+                Height = 36
             };
 
             btnVP.Click += BtnVP_Click;
@@ -349,7 +349,7 @@ namespace CrudApp.Forms
                 Text = "Salvar Celebrar",
                 Left = 150,
                 Top = top + 230,
-                Width = 100,
+                Width = 140,
                 Height = 35
             };
             btnSalvar.Click += BtnSalvar_Click;
@@ -359,9 +359,9 @@ namespace CrudApp.Forms
             btnCancelar = new Button
             {
                 Text = "Cancelar",
-                Left = 280,
+                Left = 320,
                 Top = top + 230,
-                Width = 100,
+                Width = 140,
                 Height = 35
             };
             btnCancelar.Click += (s, e) => this.DialogResult = DialogResult.Cancel;

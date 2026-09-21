@@ -24,12 +24,12 @@ namespace CrudApp.Forms
     private ComboBox cbMes;
     private TextBox txtBusca;
 
-    // 🔹 PAINÉIS
+    // PAINÉIS
     private FlowLayoutPanel panelTop;
     private Panel panelInfo;
     private Panel panelMain;
 
-    // 🔹 LABELS
+    // LABELS
     private Label lblFinalizados;
     private Label lblContratosAtrasados;
     private Label lblParcelasReceber;
@@ -113,60 +113,60 @@ namespace CrudApp.Forms
             cbMes.SelectedIndexChanged += (s, e) => LoadGrid();
             panelTop.Controls.Add(cbMes);
 
-            // 🔹 LABELS
+            // LABELS
             lblFinalizados = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkBlue
             };
 
             lblparcelasPagasNoMes = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkRed
             };
 
             lblContratosAtrasados = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.Gray
             };
 
             lblParcelasReceber = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.Black
             };
 
             lblTotalPrevisto = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkOrange
             };
 
             lblTotalRecebido = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkBlue
             };
 
             lblTotalAtraso = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkRed
             };
 
             lblSaldoFinal = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.Blue
             };
 
@@ -183,7 +183,7 @@ namespace CrudApp.Forms
 
             panelTop.Controls.Add(btnPdf);
 
-            // 🔹 PAINEL ESQUERDO
+            // PAINEL ESQUERDO
             var panelLeft = new FlowLayoutPanel
             {
                 FlowDirection = FlowDirection.TopDown,
@@ -196,7 +196,7 @@ namespace CrudApp.Forms
             panelLeft.Controls.Add(lblTotalAtraso); 
             panelLeft.Controls.Add(lblSaldoFinal);
 
-            // 🔹 PAINEL DIREITO
+            // PAINEL DIREITO
             var panelRight = new FlowLayoutPanel
             {
                 FlowDirection = FlowDirection.TopDown,
@@ -207,14 +207,14 @@ namespace CrudApp.Forms
             panelRight.Controls.Add(lblParcelasReceber);
             panelRight.Controls.Add(lblparcelasPagasNoMes);
             
-            // 🔹 PAINEL INFO (CONTÊM LEFT + RIGHT)
+            // PAINEL INFO (CONTÊM LEFT + RIGHT)
             var panelSpacer = new Panel
             {
                 Dock = DockStyle.Fill,
                 MinimumSize = new Size(850,0)
             };
     
-            // 🔹 PAINEL INFO (CONTÊM LEFT + RIGHT)
+            // PAINEL INFO (CONTÊM LEFT + RIGHT)
             panelInfo = new Panel
             {
                 Dock = DockStyle.Top,
@@ -230,7 +230,7 @@ namespace CrudApp.Forms
             panelInfo.Controls.Add(panelRight);
             panelInfo.Controls.Add(panelLeft);
 
-            // 📋 GRID
+            // GRID
            grid = new DataGridView
             {
                 Left = 0,
@@ -248,11 +248,11 @@ namespace CrudApp.Forms
             grid.CellDoubleClick += Grid_CellDoubleClick;
             grid.RowPrePaint += Grid_RowPrePaint;
 
-            // 📋 GRID 2
+            // GRID 2
             gridDespesas = new DataGridView
             {
                 Left = 0,
-                Top = 290, // 👈 abaixo da primeira
+                Top = 290, // abaixo da primeira
                 Width = 1250,
                 Height = 200,
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
@@ -261,7 +261,7 @@ namespace CrudApp.Forms
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect
             };
 
-            // 📋 GRID 3
+            // GRID 3
             gridServicos = new DataGridView
             {
                 Left = 0,
@@ -314,7 +314,7 @@ namespace CrudApp.Forms
             panelMain = new Panel
             {
                 Dock = DockStyle.Fill,
-                AutoScroll = true, // 👈 ISSO ATIVA A ROLAGEM
+                AutoScroll = true, // ISSO ATIVA A ROLAGEM
                 Padding = new Padding(5)
             };
 
@@ -328,7 +328,7 @@ namespace CrudApp.Forms
             panelMain.Controls.Add(gridServicos);
             panelMain.Controls.Add(lblTotalServicos);
 
-            // ⚠️ ORDEM FINAL
+            // ORDEM FINAL
             this.Controls.Add(panelMain);
             this.Controls.Add(panelInfo);
             this.Controls.Add(panelTop);
@@ -359,7 +359,7 @@ namespace CrudApp.Forms
                 mesSelecionado = Convert.ToInt32(cbMes.SelectedItem.ToString().Substring(0, 2));
             }
 
-            // 🔥 PARCELAS FILTRADAS PELO VENCIMENTO
+            // PARCELAS FILTRADAS PELO VENCIMENTO
             var todasParcelas = parcelaRepo.GetAll();
 
             var parcelas = todasParcelas
@@ -375,7 +375,7 @@ namespace CrudApp.Forms
                         status == "paga em atraso" ||
                         status == "paga antecipado";
 
-                    // 🔹 PAGAS → filtrar por data de pagamento
+                    // PAGAS → filtrar por data de pagamento
                     if (isPaga)
                     {
                         if (!p.Pagamento.HasValue)
@@ -386,7 +386,7 @@ namespace CrudApp.Forms
                             (!mesSelecionado.HasValue || p.Pagamento.Value.Month == mesSelecionado);
                     }
 
-                    // 🔹 NÃO PAGAS → filtrar por vencimento
+                    // NÃO PAGAS → filtrar por vencimento
                     if (p.Vencimento.HasValue)
                     {
                         return
@@ -394,7 +394,7 @@ namespace CrudApp.Forms
                                 (!anoSelecionado.HasValue || p.Vencimento.Value.Year == anoSelecionado) &&
                                 (!mesSelecionado.HasValue || p.Vencimento.Value.Month == mesSelecionado)
                             )
-                            // 🔥 mantém atrasadas sempre visíveis
+                            // mantém atrasadas sempre visíveis
                             || status == "em atraso";
                     }
 
@@ -419,7 +419,7 @@ namespace CrudApp.Forms
                 .Where(p => p.Situacao != null && p.Situacao.Equals("Em Atraso", StringComparison.OrdinalIgnoreCase))
                 .Sum(p => (decimal)(p.ValorPrestacao ?? 0));
 
-            // 🔥 JOIN PARCELA + EMPRESTIMO
+            // JOIN PARCELA + EMPRESTIMO
             var lista = (from p in parcelas
                         join e in emprestimos on p.EmprestimosId equals e.Id
                         let cliente = clienteRepo.GetById(e.ClienteId)
@@ -466,7 +466,7 @@ namespace CrudApp.Forms
             };
 
 
-            // 🔥 TOTAIS (mantém do empréstimo - NÃO usar lista nova)
+            // TOTAIS (mantém do empréstimo - NÃO usar lista nova)
             double totalAgio = emprestimos.Sum(x => x.Agio);
             double totalLiberado = emprestimos.Sum(x => x.Liberado);
             double totalJuros = emprestimos.Sum(x => x.TotalJuros);
@@ -492,7 +492,7 @@ namespace CrudApp.Forms
             var emprestimos = repo.GetAll();
             var listaParcelas = parcelaRepo.GetAll();
 
-            // 🔥 FILTRAR PARCELAS PELO MÊS
+            // FILTRAR PARCELAS PELO MÊS
             var parcelasFiltradas = listaParcelas
                 .Where(p =>
                     p.Vencimento.HasValue &&
@@ -501,7 +501,7 @@ namespace CrudApp.Forms
                 )
                 .ToList();
 
-            // 🔥 PEGAR IDs DOS EMPRÉSTIMOS ENVOLVIDOS NO MÊS
+            // PEGAR IDs DOS EMPRÉSTIMOS ENVOLVIDOS NO MÊS
             var idsEmprestimos = parcelasFiltradas
                 .Select(p => p.EmprestimosId)
                 .Distinct()
@@ -511,7 +511,7 @@ namespace CrudApp.Forms
                 .Where(e => idsEmprestimos.Contains(e.Id))
                 .ToList();
 
-            // 🔹 EMPRÉSTIMOS
+            // EMPRÉSTIMOS
              totalFinalizados = emprestimosFiltrados
                 .Count(e => e.Situacao != null &&
                             e.Situacao.Equals("Quitado", StringComparison.OrdinalIgnoreCase));
@@ -520,7 +520,7 @@ namespace CrudApp.Forms
                 .Count(e => e.Situacao != null &&
                             e.Situacao.Equals("Em Atraso", StringComparison.OrdinalIgnoreCase));
 
-            // 🔹 PARCELAS
+            // PARCELAS
            int parcelasAtrasadas = parcelasFiltradas
                 .Count(p => p.Vencimento.Value < DateTime.Today &&
                 p.Situacao != "Paga");
@@ -543,7 +543,7 @@ namespace CrudApp.Forms
                 );
           
 
-            // 🔥 EXIBIR
+            // EXIBIR
             lblFinalizados.Text = $"Contratos Finalizados: {totalFinalizados}";
             lblContratosAtrasados.Text = $"Contratos em Atraso: {totalAtrasados}";
             lblParcelasReceber.Text = $"Parcelas a Receber: {parcelasReceber}";
@@ -567,7 +567,7 @@ namespace CrudApp.Forms
             foreach (var mes in meses)
                 cbMes.Items.Add($"{mes.Numero:D2} - {mes.Nome}");
 
-            // 🔥 selecionar mês atual
+            // selecionar mês atual
             int mesAtual = DateTime.Now.Month;
 
             // +1 por causa do "Todos os meses" na posição 0
@@ -585,7 +585,7 @@ namespace CrudApp.Forms
 
             cbAno.Items.Clear();
 
-            // 🔹 opção global
+            // opção global
             cbAno.Items.Add("Todos os anos");
 
             foreach (var ano in anos)
@@ -797,7 +797,7 @@ namespace CrudApp.Forms
             if (string.IsNullOrEmpty(status))
                 return;
 
-            // 🔴 ATRASADO
+            // ATRASADO
             if (status.Equals("Em Atraso", StringComparison.OrdinalIgnoreCase))
             {
                 row.DefaultCellStyle.BackColor = Color.MistyRose;
@@ -807,7 +807,7 @@ namespace CrudApp.Forms
                 row.DefaultCellStyle.SelectionBackColor = Color.IndianRed;
                 row.DefaultCellStyle.SelectionForeColor = Color.White;
             }
-            // 🟢 PAGO
+            // PAGO
             else if (status.Equals("Paga", StringComparison.OrdinalIgnoreCase))
             {
                 row.DefaultCellStyle.BackColor = Color.Honeydew;
@@ -834,7 +834,7 @@ namespace CrudApp.Forms
                 row.DefaultCellStyle.SelectionBackColor = Color.Green;
                 row.DefaultCellStyle.SelectionForeColor = Color.White;
             }
-            // 🟡 A VENCER
+            // A VENCER
             else if (status.Equals("A Vencer", StringComparison.OrdinalIgnoreCase))
             {
                 row.DefaultCellStyle.BackColor = Color.LemonChiffon;
@@ -843,7 +843,7 @@ namespace CrudApp.Forms
                 row.DefaultCellStyle.SelectionBackColor = Color.Goldenrod;
                 row.DefaultCellStyle.SelectionForeColor = Color.White;
             }
-            // 🔵 PADRÃO
+            // PADRÃO
             else
             {
                 row.DefaultCellStyle.BackColor = Color.White;

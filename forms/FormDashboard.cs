@@ -397,6 +397,9 @@ namespace CrudApp.Forms
 
             ChartArea area = new ChartArea();
 
+            area.AxisX.LabelStyle.Format = "0.00";
+            area.AxisX.Interval = 1;
+
             area.BackColor = Color.White;
 
             area.AxisX.MajorGrid.Enabled = false;
@@ -414,7 +417,7 @@ namespace CrudApp.Forms
                 new Font("Segoe UI", 8F);
 
             area.AxisY.LabelStyle.Format =
-                "N0";
+                "N2";
 
             chart.ChartAreas.Add(area);
 
@@ -497,11 +500,7 @@ namespace CrudApp.Forms
             {
                 AutoSize = true,
                 Location = new Point(5, 75),
-                Font = new Font(
-                    "Segoe UI",
-                    8F,
-                    FontStyle.Bold
-                ),
+                Font = new Font( "Segoe UI", 8F, FontStyle.Bold ),
                 ForeColor = Color.Gray
             };
 
@@ -509,11 +508,7 @@ namespace CrudApp.Forms
             {
                 AutoSize = true,
                 Location = new Point(5, 94),
-                Font = new Font(
-                    "Segoe UI",
-                    8F,
-                    FontStyle.Bold
-                ),
+                Font = new Font( "Segoe UI", 8F, FontStyle.Bold ),
                 ForeColor = Color.Gray
             };
 
@@ -521,11 +516,7 @@ namespace CrudApp.Forms
             {
                 AutoSize = true,
                 Location = new Point(5, 113),
-                Font = new Font(
-                    "Segoe UI",
-                    8F,
-                    FontStyle.Bold
-                ),
+                Font = new Font( "Segoe UI", 8F, FontStyle.Bold ),
                 ForeColor = Color.Gray
             };
 
@@ -792,8 +783,13 @@ namespace CrudApp.Forms
 
             area.AxisX.MajorGrid.Enabled = false;
             area.AxisX.LineColor = Color.LightGray;
+
             area.AxisX.LabelStyle.Font =
                 new Font("Segoe UI", 8F);
+
+            area.AxisX.Interval = 1;
+            area.AxisX.IsMarginVisible = true;
+            area.AxisX.LabelStyle.IsEndLabelVisible = true;
 
             area.AxisY.MajorGrid.LineColor =
                 Color.Gainsboro;
@@ -803,6 +799,8 @@ namespace CrudApp.Forms
 
             area.AxisY.LabelStyle.Font =
                 new Font("Segoe UI", 8F);
+
+            area.AxisY.LabelStyle.Format = "N2";
 
             chart.ChartAreas.Add(area);
 
@@ -1013,12 +1011,11 @@ namespace CrudApp.Forms
                 totalJurosMes.Max()
             }.Max();
 
-            chart.ChartAreas[0].AxisY.Minimum = 0;
-
             chart.ChartAreas[0].AxisY.Maximum =
                 max > 0
                     ? max * 1.20
                     : 10;
+        
 
             lblTotais.Text =
                 $"Total Amortização: {totalAmortizacao:C2}    |    Total Juros: {totalJuros:C2}";

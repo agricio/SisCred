@@ -153,18 +153,27 @@ namespace CrudApp.Repositories
             conn.Open();
 
             string sql = @"
-                SELECT id, tipo, valor, vencimento, data_pagamento, situacao, criado_em
+                SELECT 
+                    id,
+                    tipo,
+                    valor,
+                    vencimento,
+                    data_pagamento,
+                    situacao,
+                    criado_em
                 FROM despesas
-                WHERE EXTRACT(YEAR FROM vencimento) = @ano
-                AND EXTRACT(MONTH FROM vencimento) = @mes
+                WHERE strftime('%Y', vencimento) = @ano
+                AND strftime('%m', vencimento) = @mes
                 ORDER BY vencimento;
             ";
 
             using var cmd = new SQLiteCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@ano", ano);
-            cmd.Parameters.AddWithValue("@mes", mes);
+
+            cmd.Parameters.AddWithValue("@ano", ano.ToString("0000"));
+            cmd.Parameters.AddWithValue("@mes", mes.ToString("00"));
 
             using var reader = cmd.ExecuteReader();
+
             while (reader.Read())
             {
                 lista.Add(new Despesa
@@ -173,11 +182,14 @@ namespace CrudApp.Repositories
                     Tipo = reader.GetString(1),
                     Valor = reader.GetDecimal(2),
                     Vencimento = reader.GetDateTime(3),
-                    DataPagamento = reader.IsDBNull(4) ? null : reader.GetDateTime(4),
+                    DataPagamento = reader.IsDBNull(4)
+                        ? null
+                        : reader.GetDateTime(4),
                     Situacao = reader.GetString(5),
                     CriadoEm = reader.GetDateTime(6)
                 });
             }
+
             return lista;
         }
 

@@ -80,35 +80,35 @@ namespace CrudApp.Forms
             lblFinalizados = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 8, FontStyle.Bold),
                 ForeColor = Color.DarkGreen
             };
 
             lblAvencer = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 8, FontStyle.Bold),
                 ForeColor = Color.DarkOrange
             };
 
             lblTotalAgio = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 8, FontStyle.Bold),
                 ForeColor = Color.Black
             };
 
             lblTotalLiberado = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 8, FontStyle.Bold),
                 ForeColor = Color.DarkGray
             };
 
             lblTotalJuros = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 8, FontStyle.Bold),
                 ForeColor = Color.Gray
             };
 

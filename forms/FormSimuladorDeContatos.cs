@@ -61,8 +61,8 @@ namespace CrudApp.Forms
                 Text = "Gerar Parcelas",
                 Left = 420,
                 Top = top + 110,
-                Width = 100,
-                Height = 26
+                Width = 110,
+                Height = 35
             };
 
             btnGerarParcelas.Click += BtnGerarParcelas_Click;
@@ -74,8 +74,8 @@ namespace CrudApp.Forms
                 Text = "Calcular Liberado",
                 Left = 420,
                 Top = 18,
-                Width = 120,
-                Height = 26
+                Width = 150,
+                Height = 30
             };
 
             btnVP.Click += BtnVP_Click;
@@ -327,7 +327,7 @@ namespace CrudApp.Forms
                 Text = "Cancelar",
                 Left = 280,
                 Top = top + 240,
-                Width = 100,
+                Width = 110,
                 Height = 35
             };
             btnCancelar.Click += (s, e) => this.DialogResult = DialogResult.Cancel;
@@ -338,7 +338,7 @@ namespace CrudApp.Forms
                 Text = "Limpar",
                 Left = 580,
                 Top = 360,
-                Width = 100,
+                Width = 110,
                 Height = 35
             };
             btnLimpar.Click += BtnLimpar_Click;
@@ -346,7 +346,7 @@ namespace CrudApp.Forms
 
             Button btnPdf = new Button
             {
-                Text = "Gerar Proposta PDF",
+                Text = "Gerar Proposta",
                 Left = 420,
                 Top = 360,
                 Width = 140,

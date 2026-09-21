@@ -37,15 +37,29 @@ namespace CrudApp.Forms
             this.Icon = new Icon("app.ico");
             Text = "Adicionar Despesa";
             Width = 420;
-            Height = 350;
+            Height = 360;
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
 
-            Label lblTipo = new Label { Text = "Tipo:", Left = 30, Top = 30 };
-            txtTipo = new TextBox { Left = 150, Top = 25, Width = 200 };
+            Label lblTipo = new Label { 
+                Text = "Tipo:", 
+                Left = 30, 
+                Top = 30 
+            };
 
-            Label lblValor = new Label { Text = "Valor:", Left = 30, Top = 70 };
+            txtTipo = new TextBox { 
+                Left = 150, 
+                Top = 25, 
+                Width = 200 
+            };
+
+            Label lblValor = new Label { 
+                Text = "Valor:", 
+                Left = 30, 
+                Top = 70 
+            };
+
             txtValor = new TextBox
             {
                 Left = 150,
@@ -90,6 +104,7 @@ namespace CrudApp.Forms
                 Width = 120,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
+
             cbSituacao.Items.AddRange(new[] { "Pendente", "Pago", "Atrasada" });
             cbSituacao.SelectedIndex = 0;
 
@@ -98,6 +113,7 @@ namespace CrudApp.Forms
                 Text = "Salvar",
                 Left = 150,
                 Top = 260,
+                Height = 35,
                 Width = 120
             };
             btnSalvar.Click += BtnSalvar_Click;

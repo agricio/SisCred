@@ -47,7 +47,7 @@ namespace CrudApp.Forms
             this.AutoScaleMode = AutoScaleMode.None;
             this.AutoSize = false;
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
+            //MaximizeBox = false;
 
             // Painel superior (busca)
             panelTop = new FlowLayoutPanel
@@ -77,43 +77,43 @@ namespace CrudApp.Forms
             panelTop.Controls.Add(txtBusca);
             panelTop.Controls.Add(cbAno);
 
-            // 🔹 LABELS
+            // LABELS
             lblFinalizados = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkGreen
             };
 
             lblAvencer = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkOrange
             };
 
             lblTotalAgio = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.Black
             };
 
             lblTotalLiberado = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.DarkGray
             };
 
             lblTotalJuros = new Label
             {
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 ForeColor = Color.Gray
             };
 
-            // 🔹 PAINEL ESQUERDO
+            // PAINEL ESQUERDO
             var panelLeft = new FlowLayoutPanel
             {
                 FlowDirection = FlowDirection.TopDown,
@@ -125,7 +125,7 @@ namespace CrudApp.Forms
             panelLeft.Controls.Add(lblTotalLiberado);
             panelLeft.Controls.Add(lblTotalJuros);
 
-            // 🔹 PAINEL DIREITO
+            // PAINEL DIREITO
             var panelRight = new FlowLayoutPanel
             {
                 FlowDirection = FlowDirection.TopDown,
@@ -134,14 +134,14 @@ namespace CrudApp.Forms
             panelRight.Controls.Add(lblFinalizados);
             panelRight.Controls.Add(lblAvencer);
     
-            // 🔹 PAINEL INFO (CONTÊM LEFT + RIGHT)
+            // PAINEL INFO (CONTÊM LEFT + RIGHT)
             var panelSpacer = new Panel
             {
                 Dock = DockStyle.Fill,
                 MinimumSize = new Size(850,0)
             };
     
-            // 🔹 PAINEL INFO (CONTÊM LEFT + RIGHT)
+            // PAINEL INFO (CONTÊM LEFT + RIGHT)
             panelInfo = new Panel
             {
                 Dock = DockStyle.Top,
@@ -157,7 +157,7 @@ namespace CrudApp.Forms
             panelInfo.Controls.Add(panelRight);
             panelInfo.Controls.Add(panelLeft);
 
-            // 📋 GRID
+            // GRID
             grid = new DataGridView
             {
                 Dock = DockStyle.Fill,
@@ -178,7 +178,7 @@ namespace CrudApp.Forms
             };
             panelMain.Controls.Add(grid);
 
-            // ⚠️ ORDEM FINAL
+            // ORDEM FINAL
             this.Controls.Add(panelMain);
             this.Controls.Add(panelInfo);
             this.Controls.Add(panelTop);
@@ -309,7 +309,7 @@ namespace CrudApp.Forms
 
             cbAno.Items.Clear();
 
-            // 🔹 opção global
+            // opção global
             cbAno.Items.Add("Todos os anos");
 
             foreach (var ano in anos)

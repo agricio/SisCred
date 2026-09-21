@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SiS Cred")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbf8ea420e8791933fa4d8e71522d0294be3e793")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5338cdc76479704f2893e04acaa014909002528e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SiS Cred")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SiS Cred")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

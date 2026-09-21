@@ -251,25 +251,36 @@ namespace CrudApp.Forms
                 SizeMode = PictureBoxSizeMode.Zoom
             };
 
-            btnTirarFoto = new Button { Left = 400, Top = 230, Width = 120, Text = "Carregar Foto" };
-            btnAbrirCamera = new Button { Left = 400, Top = 260, Width = 120, Text = "Abrir Câmera" };
-            
-            btnSalvar = new Button
-            {
-                Left = 20,
-                Top = top + 20,
+            btnTirarFoto = new Button { 
+                Left = 400, 
+                Top = 230, 
                 Width = 120,
-                Height = 32,
-                Text = "Salvar"
+                Height = 35,  
+                Text = "Carregar Foto" 
             };
 
-            btnCancelar = new Button
-            {
-                Left = 160,
-                Top = top + 20,
+            btnAbrirCamera = new Button { 
+                Left = 400, 
+                Top = 270, 
                 Width = 120,
-                Height = 32,
-                Text = "Cancelar"
+                Height = 35,  
+                Text = "Abrir Câmera" 
+            };
+            
+            btnSalvar = new Button { 
+                Left = 20, 
+                Top = 680,  
+                Width = 120,
+                Height = 35, 
+                Text = "Salvar" 
+            };
+
+            btnCancelar = new Button { 
+                Left = 160, 
+                Top = 680, 
+                Width = 120,
+                Height = 35,  
+                Text = "Cancelar" 
             };
 
             // EVENTOS

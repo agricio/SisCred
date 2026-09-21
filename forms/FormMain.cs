@@ -36,7 +36,7 @@ namespace CrudApp.Forms
                 BackColor = System.Drawing.Color.WhiteSmoke
             };
 
-            // 🔍 CAMPO DE PESQUISA
+            // CAMPO DE PESQUISA
             txtPesquisa = new TextBox
             {
                 Width = 300,
@@ -46,12 +46,13 @@ namespace CrudApp.Forms
             };
             txtPesquisa.TextChanged += TxtPesquisa_TextChanged;
 
-            // ➕ BOTÃO ADICIONAR
+            // BOTÃO ADICIONAR
             var btnAdd = new Button
             {
                 Text = "Adicionar Cliente",
-                Left = 330,
-                Top = 20,
+                Left = 340,
+                Top = 15,
+                Height = 35,
                 Width = 120
             };
             btnAdd.Click += BtnAdd_Click;
@@ -63,6 +64,7 @@ namespace CrudApp.Forms
             var panelCenter = new Panel
             {
                 Dock = DockStyle.Fill,
+                Top = 50,
                 Padding = new Padding(10) // <-- Afasta a tabela das bordas
             };
 
@@ -91,7 +93,7 @@ namespace CrudApp.Forms
             // EVENTO: Botão excluir
             grid.CellClick += Grid_CellClick;
 
-            // ⭐ EVENTO: Duplo clique para editar
+            // EVENTO: Duplo clique para editar
             grid.CellDoubleClick += Grid_CellDoubleClick;
 
             panelCenter.Controls.Add(grid);

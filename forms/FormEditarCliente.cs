@@ -252,13 +252,46 @@ namespace CrudApp.Forms
             Controls.Add(txtCelPix);
             top += vGap;
 
-            btnTirarFoto = new Button { Left = 400, Top = 230, Width = 120, Text = "Carregar Foto" };
-            btnAbrirCamera = new Button { Left = 400, Top = 260, Width = 120, Text = "Abrir Câmera" };
+            btnTirarFoto = new Button { 
+                Left = 400, 
+                Top = 230, 
+                Width = 120,
+                Height = 35,  
+                Text = "Carregar Foto" 
+            };
+
+            btnAbrirCamera = new Button { 
+                Left = 400, 
+                Top = 270, 
+                Width = 120,
+                Height = 35,  
+                Text = "Abrir Câmera" 
+            };
             
-            btnSalvar = new Button { Left = 20, Top = 710, Width = 120, Text = "Salvar" };
-            btnCancelar = new Button { Left = 160, Top = 710, Width = 120, Text = "Cancelar" };
+            btnSalvar = new Button { 
+                Left = 20, 
+                Top = 710, 
+                Width = 120,
+                Height = 35, 
+                Text = "Salvar" 
+            };
+
+            btnCancelar = new Button { 
+                Left = 160, 
+                Top = 710, 
+                Width = 120,
+                Height = 35,  
+                Text = "Cancelar" 
+            };
+
             //btnGerarPdf = new Button { Left = 20, Top = 740, Width = 120, Text = "Gerar PDF" };
-            btnVerEmprestimos = new Button { Left = 300, Top = 710, Width = 200, Text = "Historico do Cliente"};
+            btnVerEmprestimos = new Button { 
+                Left = 300, 
+                Top = 710, 
+                Width = 200,
+                Height = 35,  
+                Text = "Historico do Cliente"
+            };
 
             // EVENTOS
             btnTirarFoto.Click += BtnTirarFoto_Click;

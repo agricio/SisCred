@@ -338,7 +338,7 @@ A estrutura permite:
 
 ### Livro Caixa
 
-![Livro Caixa](screenshots/livro-caixa.png)
+![Livro Caixa](screenshots/caixa.png)
 
 ---
 
@@ -385,5 +385,5 @@ O executavel está na área de realese aqui do github, junto com seed de backup 
 ---
 
 <p align="center">
-  <strong>Speed Cred</strong> — Gestão de crédito de forma simples e organizada.
+  <strong>SiS Cred</strong> — Gestão de crédito de forma simples e organizada.
 </p>

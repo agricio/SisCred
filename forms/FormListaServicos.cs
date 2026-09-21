@@ -58,6 +58,7 @@ namespace CrudApp.Forms
                 Text = "Filtrar",
                 Left = 210,
                 Top = 13,
+                Height = 35,
                 Width = 90
             };
             btnFiltrar.Click += (s, e) => CarregarPorMes();
@@ -67,6 +68,7 @@ namespace CrudApp.Forms
                 Text = "Adicionar",
                 Left = 310,
                 Top = 13,
+                Height = 35,
                 Width = 90
             };
 
