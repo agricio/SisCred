@@ -506,8 +506,6 @@ namespace CrudApp.Forms
             }
         }
 
-
-
         private void BtnCalcularLiberado_Click(object? sender, EventArgs e)
         {
             using var frm = new FormCalcularLiberado();
@@ -629,6 +627,7 @@ namespace CrudApp.Forms
             viewer.ShowDialog();
         }
 
+/*
         private void BtnGerarContrato_Click(object sender, EventArgs e)
         {
             try
@@ -696,6 +695,7 @@ namespace CrudApp.Forms
                     MessageBoxIcon.Error);
             }
         }
+    */
 
         private void OcultarCamposEdicaoEmprestimo()
         {

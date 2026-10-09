@@ -59,6 +59,7 @@ namespace CrudApp.Forms
             Text = "Avaliar/Editar Contrato";
             Width = 750;
             Height = 500;
+            
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 
             int top = 40;
@@ -628,10 +629,7 @@ namespace CrudApp.Forms
             viewer.ShowDialog();
         }
 
-
-
-
-
+    /*
         private void BtnGerarContrato_Click(object sender, EventArgs e)
         {
             try
@@ -699,6 +697,8 @@ namespace CrudApp.Forms
                     MessageBoxIcon.Error);
             }
         }
+    
+    */
 
         private void OcultarCamposEdicaoEmprestimo()
         {
